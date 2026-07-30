@@ -37,16 +37,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Hilangkan scrollbar */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        /* Animasi */
+        /* Animasi Base */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -73,6 +64,7 @@
             100% { box-shadow: 0 0 0 0 rgba(37,211,102, 0); }
         }
 
+        /* Animasi Slider Portofolio */
         @keyframes scroll-left {
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-200px * 8 - 1rem * 8)); }
@@ -85,6 +77,22 @@
         }
 
         .animate-scroll-left:hover {
+            animation-play-state: paused;
+        }
+
+        /* Animasi Slider Katalog Baru */
+        @keyframes scroll-catalog {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 0.75rem)); } /* -50% dari lebar container untuk infinite loop mulus */
+        }
+
+        .animate-scroll-catalog {
+            animation: scroll-catalog 25s linear infinite;
+            display: flex;
+            width: max-content;
+        }
+
+        .animate-scroll-catalog:hover {
             animation-play-state: paused;
         }
 
@@ -205,9 +213,9 @@
                 </div>
             </section>
 
-            <!-- Katalog Section -->
-            <section id="katalog" class="px-6 md:px-12 py-16 bg-white/40">
-                <div class="flex justify-between items-end mb-10 animate-fade-in-up">
+            <!-- Katalog Section (Updated dengan Animasi Geser) -->
+            <section id="katalog" class="py-16 bg-white/40 overflow-hidden relative">
+                <div class="px-6 md:px-12 flex justify-between items-end mb-10 animate-fade-in-up">
                     <div>
                         <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-2">Katalog Akrilik & Buket</h2>
                         <p class="text-[#8a7d8d]">Pilihan kado eksklusif untuk setiap pencapaian akademik.</p>
@@ -217,79 +225,15 @@
                     </button>
                 </div>
 
-                <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar animate-fade-in-up" style="animation-delay: 0.2s">
-                    <!-- Produk 1 -->
-                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
-                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
-                            <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&q=80&w=400&h=500" alt="Sempro Mini Akrilik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Sempro / Proposal</div>
-                        </div>
-                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Sempro Mini Akrilik</h3>
-                        <div class="flex justify-between items-center mt-2">
-                            <p class="text-[#8a7d8d] font-medium">Rp 120.000</p>
-                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
-                        </div>
+                <!-- Kontainer Animasi -->
+                <div class="relative w-full overflow-hidden pb-8 animate-fade-in-up" style="animation-delay: 0.2s">
+                    <div id="katalog-container" class="animate-scroll-catalog gap-6 px-6 md:px-12">
+                        <!-- Card Produk akan di-generate otomatis via JavaScript -->
                     </div>
-                    <!-- Produk 2 -->
-                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
-                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
-                            <img src="https://images.unsplash.com/photo-1563241597-12a414531d5e?auto=format&fit=crop&q=80&w=400&h=500" alt="Buket Bunga Premium" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Buket Bunga</div>
-                        </div>
-                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Buket Bunga Premium</h3>
-                        <div class="flex justify-between items-center mt-2">
-                            <p class="text-[#8a7d8d] font-medium">Rp 150.000</p>
-                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
-                        </div>
-                    </div>
-                    <!-- Produk 3 -->
-                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
-                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
-                            <img src="https://images.unsplash.com/photo-1523580494112-071dcb92a71d?auto=format&fit=crop&q=80&w=400&h=500" alt="Sidang Classic Akrilik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Sidang Skripsi</div>
-                        </div>
-                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Sidang Classic Akrilik</h3>
-                        <div class="flex justify-between items-center mt-2">
-                            <p class="text-[#8a7d8d] font-medium">Rp 175.000</p>
-                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
-                        </div>
-                    </div>
-                    <!-- Produk 4 -->
-                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
-                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
-                            <img src="https://images.unsplash.com/photo-1613728913303-3486a4e32057?auto=format&fit=crop&q=80&w=400&h=500" alt="Buket Uang Aesthetic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Buket Uang</div>
-                        </div>
-                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Buket Uang Aesthetic</h3>
-                        <div class="flex justify-between items-center mt-2">
-                            <p class="text-[#8a7d8d] font-medium">Rp 300.000</p>
-                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
-                        </div>
-                    </div>
-                    <!-- Produk 5 -->
-                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
-                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
-                            <img src="https://images.unsplash.com/photo-1541250848049-b4f71426cad6?auto=format&fit=crop&q=80&w=400&h=500" alt="Graduation Luxe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Wisuda</div>
-                        </div>
-                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Graduation Luxe</h3>
-                        <div class="flex justify-between items-center mt-2">
-                            <p class="text-[#8a7d8d] font-medium">Rp 250.000</p>
-                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
-                        </div>
-                    </div>
-                    <!-- Produk 6 -->
-                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
-                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
-                            <img src="https://images.unsplash.com/photo-1575224300306-1b8da36134ec?auto=format&fit=crop&q=80&w=400&h=500" alt="Buket Snack & Boneka" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Buket Snack</div>
-                        </div>
-                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Buket Snack & Boneka</h3>
-                        <div class="flex justify-between items-center mt-2">
-                            <p class="text-[#8a7d8d] font-medium">Rp 135.000</p>
-                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
-                        </div>
-                    </div>
+                    
+                    <!-- Overlay Gradient Kiri Kanan -->
+                    <div class="absolute left-0 top-0 bottom-8 w-12 md:w-24 bg-gradient-to-r from-white/90 to-transparent pointer-events-none"></div>
+                    <div class="absolute right-0 top-0 bottom-8 w-12 md:w-24 bg-gradient-to-l from-white/90 to-transparent pointer-events-none"></div>
                 </div>
             </section>
 
@@ -350,7 +294,7 @@
                 <div class="flex flex-col gap-6 relative">
                     <!-- Row 1 -->
                     <div class="flex gap-4 animate-scroll-left px-4" id="portfolio-row-1">
-                        <!-- Konten akan di-generate via JavaScript untuk mengurangi repetisi kode HTML panjang -->
+                        <!-- Konten akan di-generate via JavaScript -->
                     </div>
 
                     <!-- Row 2 -->
@@ -643,7 +587,43 @@
             link.addEventListener('click', toggleMenu);
         });
 
-        // Logika Render Portofolio (Untuk menghindari penulisan ulang HTML yang terlalu panjang)
+        // ==========================================
+        // RENDER KATALOG DENGAN ANIMASI GESER
+        // ==========================================
+        const products = [
+            { id: 1, name: 'Sempro Mini Akrilik', price: 'Rp 120.000', category: 'Sempro / Proposal', img: 'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&q=80&w=400&h=500' },
+            { id: 2, name: 'Buket Bunga Premium', price: 'Rp 150.000', category: 'Buket Bunga', img: 'https://images.unsplash.com/photo-1563241597-12a414531d5e?auto=format&fit=crop&q=80&w=400&h=500' },
+            { id: 3, name: 'Sidang Classic Akrilik', price: 'Rp 175.000', category: 'Sidang Skripsi', img: 'https://images.unsplash.com/photo-1523580494112-071dcb92a71d?auto=format&fit=crop&q=80&w=400&h=500' },
+            { id: 4, name: 'Buket Uang Aesthetic', price: 'Rp 300.000', category: 'Buket Uang', img: 'https://images.unsplash.com/photo-1613728913303-3486a4e32057?auto=format&fit=crop&q=80&w=400&h=500' },
+            { id: 5, name: 'Graduation Luxe', price: 'Rp 250.000', category: 'Wisuda', img: 'https://images.unsplash.com/photo-1541250848049-b4f71426cad6?auto=format&fit=crop&q=80&w=400&h=500' },
+            { id: 6, name: 'Buket Snack & Boneka', price: 'Rp 135.000', category: 'Buket Snack', img: 'https://images.unsplash.com/photo-1575224300306-1b8da36134ec?auto=format&fit=crop&q=80&w=400&h=500' },
+        ];
+
+        const katalogContainer = document.getElementById('katalog-container');
+        // Gandakan isi array untuk membuat efek putaran (looping) tanpa putus
+        const duplicatedProducts = [...products, ...products];
+
+        duplicatedProducts.forEach(item => {
+            const card = document.createElement('div');
+            // Lebar card dibuat tetap (fixed) agar sejajar dengan baik saat digeser
+            card.className = "w-[260px] md:w-[280px] bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] flex-shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer";
+            card.innerHTML = `
+                <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
+                    <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                    <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">${item.category}</div>
+                </div>
+                <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">${item.name}</h3>
+                <div class="flex justify-between items-center mt-2">
+                    <p class="text-[#8a7d8d] font-medium">${item.price}</p>
+                    <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
+                </div>
+            `;
+            katalogContainer.appendChild(card);
+        });
+
+        // ==========================================
+        // RENDER GAMBAR PORTOFOLIO
+        // ==========================================
         const portfolioImagesRow1 = [
             'https://images.unsplash.com/photo-1523580494112-071dcb92a71d?auto=format&fit=crop&q=80&w=400&h=400',
             'https://images.unsplash.com/photo-1525926476899-7a2e58c8a143?auto=format&fit=crop&q=80&w=400&h=400',
@@ -685,7 +665,9 @@
         renderPortfolio('portfolio-row-1', portfolioImagesRow1);
         renderPortfolio('portfolio-row-2', portfolioImagesRow2);
 
-        // Logika Submit Form WhatsApp
+        // ==========================================
+        // LOGIKA SUBMIT FORM KE WHATSAPP
+        // ==========================================
         const orderForm = document.getElementById('order-form');
         orderForm.addEventListener('submit', function(e) {
             e.preventDefault(); 
@@ -699,7 +681,7 @@
 
             if(!nama) return;
 
-            const adminWA = "6281234567890"; // Nomor WA Admin
+            const adminWA = "6281234567890"; // Ganti dengan Nomor WA Admin
             
             const message = `Halo Admin Bunga Cerita! 👋\nSaya ingin memesan kado:\n\n*Nama:* ${nama}\n*No. WA:* ${no_wa || '-'}\n*Kampus / Lokasi:* ${kampus}\n*Jenis Produk:* ${produk}\n*Catatan Khusus:* ${catatan || '-'}\n\nMohon info total harga dan prosedur pembayarannya ya. Terima kasih! ✨`;
 
