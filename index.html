@@ -149,26 +149,28 @@
                 <a href="#pesan" class="mobile-link mt-4 bg-[#b496c4] text-white text-center py-3 rounded-xl font-semibold shadow-md hover:bg-[#9a7ca9] transition-colors">Pesan Sekarang</a>
             </div>
 
-            <!-- Hero Section (Dioptimasi SEO & Layout) -->
+            <!-- Hero Section (Typography Diperindah & Teks Disinkatkan) -->
             <section id="beranda" class="px-6 md:px-12 py-10 lg:py-20 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
                 <!-- Teks Hero -->
                 <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left animate-fade-in-up" style="animation-delay: 0.2s">
                     
-                    <h1 class="font-serif text-4xl md:text-5xl lg:text-[56px] leading-[1.2] lg:leading-[1.15] text-[#4a3e4d] mb-4">
+                    <h1 class="font-serif text-[40px] md:text-5xl lg:text-[64px] leading-[1.15] text-[#4a3e4d] mb-4">
                         Rayakan Momen <br/>
-                        <i class="text-[#b496c4] text-2xl md:text-3xl lg:text-4xl leading-tight block my-2">Sidang, Wisuda dan berbagai acara lainnya</i> 
-                        Lebih Aesthetic
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#b496c4] to-[#9a7ca9] italic text-[32px] md:text-[40px] lg:text-[48px] block my-2">
+                            Sidang, Wisuda & Acara Lainnya
+                        </span> 
+                        Lebih Aesthetic.
                     </h1>
-                    <p class="text-[#b496c4] font-serif text-xl md:text-2xl italic mb-4">"Karena Setiap Momen Layak Diceritakan."</p>
-                    <p class="text-[#8a7d8d] text-base md:text-lg mb-6 leading-relaxed max-w-md mx-auto lg:mx-0">
-                        Ganti kado biasa dengan <strong class="text-[#4a3e4d]">papan ucapan akrilik</strong> eksklusif & aneka buket premium. Siap antar langsung ke wilayah <strong class="text-[#4a3e4d]">Tangsel - Ciputat</strong> dan sekitarnya untuk setiap perayaan spesialmu.
+                    
+                    <p class="text-[#8a7d8d] text-base md:text-lg mb-8 leading-relaxed max-w-md mx-auto lg:mx-0">
+                        Kado <strong class="text-[#4a3e4d]">papan akrilik</strong> eksklusif & buket premium. Siap antar pesananmu ke area <strong class="text-[#4a3e4d]">Tangsel - Ciputat</strong>.
                     </p>
                     
                     <!-- BLOK HARGA YANG SUDAH DI-HIGHLIGHT MERAH TERANG -->
-                    <div class="bg-white/90 border-2 border-[#b496c4]/40 rounded-2xl p-5 mb-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] inline-block relative overflow-hidden mx-auto lg:mx-0">
+                    <div class="bg-white/90 border border-[#f3e8f4] rounded-2xl p-4 md:p-5 mb-8 shadow-sm inline-block relative overflow-hidden mx-auto lg:mx-0">
                         <div class="absolute -right-4 -top-4 w-16 h-16 bg-[#f3e8f4] rounded-full opacity-50 pointer-events-none"></div>
                         <p class="text-[#4a3e4d] font-bold text-sm flex items-center justify-center lg:justify-start gap-2 mb-4 relative z-10">
-                            <span class="text-xl">✨</span> Opsi Ramah Kantong Mahasiswa:
+                            <span class="text-xl">✨</span> Opsi Ramah Kantong:
                         </p>
                         <div class="flex flex-wrap justify-center lg:justify-start gap-3 text-sm font-semibold relative z-10">
                             <!-- Opsi Sewa: Merah Terang -->
@@ -390,7 +392,7 @@
                             <input type="text" name="lokasi" required placeholder="Cth: Bintaro Sektor 5 / UIN Jakarta" class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d]" />
                         </div>
 
-                        <!-- Dropdown Produk Diperluas -->
+                        <!-- Dropdown Produk -->
                         <div class="flex flex-col gap-2">
                             <label class="text-sm font-semibold text-[#4a3e4d] ml-2">Jenis Produk</label>
                             <select name="produk" id="produk-select" class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d] appearance-none cursor-pointer">
@@ -632,7 +634,7 @@
                 card.className = "w-[180px] h-[220px] md:w-[220px] md:h-[260px] flex-shrink-0 relative overflow-hidden rounded-[24px] shadow-sm group";
                 
                 card.innerHTML = `
-                    <img src="${img}" alt="Portofolio ${idx}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                    <img src="${img}" alt="Papan Ucapan Akrilik ${idx}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
                     <div class="absolute inset-0 bg-gradient-to-t from-[#b496c4]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 `;
                 container.appendChild(card);
