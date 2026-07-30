@@ -26,13 +26,6 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            /* Hide default cursor on desktop to favor custom cursor */
-            @media (pointer: fine) { cursor: none; }
-        }
-
-        /* Hover reset untuk elemen interaktif saat pakai custom cursor */
-        @media (pointer: fine) {
-            a, button, input, select, textarea, .cursor-pointer { cursor: none !important; }
         }
 
         .bg-aesthetic {
@@ -105,10 +98,6 @@
 </head>
 <body class="selection-custom">
 
-    <!-- Custom Cursor Base (Sembunyi di Mobile) -->
-    <div id="cursor-dot" class="hidden md:block fixed top-0 left-0 w-2.5 h-2.5 bg-[#b496c4] rounded-full pointer-events-none z-[9999] transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-75 ease-out"></div>
-    <div id="cursor-outline" class="hidden md:block fixed top-0 left-0 w-8 h-8 border-2 border-[#b496c4]/60 rounded-full pointer-events-none z-[9998] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out"></div>
-
     <div class="bg-aesthetic min-h-screen relative py-0 md:py-10 px-0 md:px-6 flex justify-center">
         <!-- Main Glass Container -->
         <div class="w-full max-w-6xl bg-white/70 backdrop-blur-xl md:rounded-[40px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white/50 overflow-hidden relative">
@@ -168,16 +157,20 @@
                         Ganti kado biasa dengan papan ucapan akrilik eksklusif & aneka buket premium. Siap antar langsung ke kampus (UIN, Unpam, Bintaro & sekitarnya).
                     </p>
                     
-                    <div class="bg-white/80 border border-[#f3e8f4] rounded-2xl p-4 mb-8 shadow-sm inline-block">
-                        <p class="text-[#4a3e4d] font-medium text-sm flex items-center gap-2 mb-2">
-                            <span class="text-[#b496c4]">✨</span> Opsi Ramah Kantong Mahasiswa:
+                    <!-- BLOK HARGA YANG SUDAH DI-HIGHLIGHT -->
+                    <div class="bg-white/90 border-2 border-[#b496c4]/40 rounded-2xl p-5 mb-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] inline-block relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 w-16 h-16 bg-[#f3e8f4] rounded-full opacity-50 pointer-events-none"></div>
+                        <p class="text-[#4a3e4d] font-bold text-sm flex items-center gap-2 mb-4 relative z-10">
+                            <span class="text-xl">✨</span> Opsi Ramah Kantong Mahasiswa:
                         </p>
-                        <div class="flex gap-3 text-sm">
-                            <div class="bg-[#f8f6f9] px-3 py-1.5 rounded-lg border border-[#e8edf4]">
-                                <strong>Sewa:</strong> Mulai Rp 60rb
+                        <div class="flex flex-wrap gap-3 text-sm font-semibold relative z-10">
+                            <div class="bg-[#b496c4] text-white px-5 py-2.5 rounded-xl shadow-md border border-[#9a7ca9] flex items-center gap-2">
+                                <span class="bg-white/20 px-2 py-0.5 rounded text-xs">Sewa</span>
+                                <span><span class="text-white/80 font-normal">Mulai</span> Rp 60rb</span>
                             </div>
-                            <div class="bg-[#f8f6f9] px-3 py-1.5 rounded-lg border border-[#e8edf4]">
-                                <strong>Beli:</strong> Mulai Rp 300rb
+                            <div class="bg-[#f8f6f9] text-[#4a3e4d] px-5 py-2.5 rounded-xl shadow-sm border border-[#e8edf4] flex items-center gap-2">
+                                <span class="bg-[#f3e8f4] px-2 py-0.5 rounded text-xs text-[#b496c4]">Beli</span>
+                                <span><span class="text-[#8a7d8d] font-normal">Mulai</span> Rp 300rb</span>
                             </div>
                         </div>
                     </div>
@@ -392,7 +385,7 @@
                         </p>
                     </div>
                     <div class="relative z-10 w-full md:w-auto flex justify-center">
-                        <a href="https://wa.me/6289527169357?text=Halo%20Admin,%20saya%20tertarik%20gabung%20menjadi%20Mitra%20Reseller%20Bunga%20Cerita!" target="_blank" class="bg-white text-[#b496c4] font-bold px-8 py-4 rounded-full shadow-lg hover:bg-[#f8f6f9] hover:scale-105 transition-all w-full md:w-auto cursor-pointer block text-center">
+                        <a href="https://wa.me/6281818381001?text=Halo%20Admin,%20saya%20tertarik%20gabung%20menjadi%20Mitra%20Reseller%20Bunga%20Cerita!" target="_blank" class="bg-white text-[#b496c4] font-bold px-8 py-4 rounded-full shadow-lg hover:bg-[#f8f6f9] hover:scale-105 transition-all w-full md:w-auto cursor-pointer block text-center">
                             Daftar Reseller &rarr;
                         </a>
                     </div>
@@ -509,10 +502,11 @@
 
                     <button type="submit" class="w-full mt-8 flex items-center justify-center gap-2 bg-[#b496c4] text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-[#b496c4]/30 hover:bg-[#9a7ca9] transition-all active:scale-[0.98] cursor-pointer">
                         <span>Kirim via WhatsApp</span>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
-                    </button>
-                </form>
-            </section>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825 0 6.938 3.112 6.938 6.937 0 3.825-3.113 6.938-6.938 6.938z"/>
+            </svg>
+        </button>
+    </form>
+</section>
 
             <!-- Footer -->
             <footer class="px-6 md:px-12 py-10 text-center border-t border-[#f3e8f4]/50 bg-white/30">
@@ -560,13 +554,13 @@
         
         <!-- Tombol Sticky Mobile untuk Chat Admin -->
         <div class="fixed bottom-4 left-4 right-24 z-40 md:hidden">
-            <a href="https://wa.me/6289527169357" target="_blank" rel="noreferrer" class="flex justify-center items-center w-full bg-gradient-to-r from-[#b496c4] to-[#c7abc2] text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-[#b496c4]/40 active:scale-95 transition-transform">
+            <a href="https://wa.me/6281818381001" target="_blank" rel="noreferrer" class="flex justify-center items-center w-full bg-gradient-to-r from-[#b496c4] to-[#c7abc2] text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-[#b496c4]/40 active:scale-95 transition-transform">
                 Tanya Admin
             </a>
         </div>
 
         <!-- Floating WhatsApp Button -->
-        <a href="https://wa.me/6289527169357" target="_blank" rel="noreferrer" class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_10px_20px_rgba(37,211,102,0.3)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-pointer" style="animation: pulse-wa 2s infinite">
+        <a href="https://wa.me/6281818381001" target="_blank" rel="noreferrer" class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_10px_20px_rgba(37,211,102,0.3)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-pointer" style="animation: pulse-wa 2s infinite">
             <svg class="w-8 h-8 md:w-9 md:h-9" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825 0 6.938 3.112 6.938 6.937 0 3.825-3.113 6.938-6.938 6.938z"/>
             </svg>
@@ -575,40 +569,6 @@
 
     <!-- Script Logika Interaktif -->
     <script>
-        // ==========================================
-        // CUSTOM CURSOR LOGIC
-        // ==========================================
-        const cursorDot = document.getElementById('cursor-dot');
-        const cursorOutline = document.getElementById('cursor-outline');
-        
-        // Cek jika user menggunakan mouse (bukan touch device)
-        if (window.matchMedia("(pointer: fine)").matches) {
-            window.addEventListener('mousemove', (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
-                
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
-                
-                // Sedikit delay untuk efek trailing pada outline
-                setTimeout(() => {
-                    cursorOutline.style.left = `${posX}px`;
-                    cursorOutline.style.top = `${posY}px`;
-                }, 50);
-            });
-
-            // Efek membesar saat hover pada elemen yang bisa diklik
-            const hoverElements = document.querySelectorAll('a, button, input, select, textarea, details');
-            hoverElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursorOutline.classList.add('scale-[1.8]', 'bg-[#b496c4]/20');
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursorOutline.classList.remove('scale-[1.8]', 'bg-[#b496c4]/20');
-                });
-            });
-        }
-
         // ==========================================
         // MENU MOBILE LOGIC
         // ==========================================
@@ -780,7 +740,7 @@
 
             if(!nama) return;
 
-            const adminWA = "6289527169357"; // Nomor WA Admin Telah Diperbarui
+            const adminWA = "6281818381001"; // Nomor WA Admin Baru
             
             const message = `Halo Admin Bunga Cerita! 👋\nSaya ingin memesan kado:\n\n*Nama:* ${nama}\n*No. WA:* ${no_wa || '-'}\n*Kampus / Lokasi:* ${kampus}\n*Jenis Produk:* ${produk}\n*Catatan Khusus:* ${catatan || '-'}\n\nMohon info total harga dan prosedur pembayarannya ya. Terima kasih! ✨`;
 
