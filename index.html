@@ -157,17 +157,19 @@
                         Ganti kado biasa dengan papan ucapan akrilik eksklusif & aneka buket premium. Siap antar langsung ke kampus (UIN, Unpam, Bintaro & sekitarnya).
                     </p>
                     
-                    <!-- BLOK HARGA YANG SUDAH DI-HIGHLIGHT -->
+                    <!-- BLOK HARGA YANG SUDAH DI-HIGHLIGHT MERAH TERANG -->
                     <div class="bg-white/90 border-2 border-[#b496c4]/40 rounded-2xl p-5 mb-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] inline-block relative overflow-hidden">
                         <div class="absolute -right-4 -top-4 w-16 h-16 bg-[#f3e8f4] rounded-full opacity-50 pointer-events-none"></div>
                         <p class="text-[#4a3e4d] font-bold text-sm flex items-center gap-2 mb-4 relative z-10">
                             <span class="text-xl">✨</span> Opsi Ramah Kantong Mahasiswa:
                         </p>
                         <div class="flex flex-wrap gap-3 text-sm font-semibold relative z-10">
-                            <div class="bg-[#b496c4] text-white px-5 py-2.5 rounded-xl shadow-md border border-[#9a7ca9] flex items-center gap-2">
-                                <span class="bg-white/20 px-2 py-0.5 rounded text-xs">Sewa</span>
-                                <span><span class="text-white/80 font-normal">Mulai</span> Rp 60rb</span>
+                            <!-- Opsi Sewa: Merah Terang -->
+                            <div class="bg-red-500 text-white px-5 py-2.5 rounded-xl shadow-md border border-red-600 flex items-center gap-2 animate-pulse" style="animation-duration: 3s;">
+                                <span class="bg-white/30 px-2 py-0.5 rounded text-xs font-bold tracking-wider">SEWA</span>
+                                <span><span class="text-white/90 font-normal">Mulai</span> Rp 60rb</span>
                             </div>
+                            <!-- Opsi Beli -->
                             <div class="bg-[#f8f6f9] text-[#4a3e4d] px-5 py-2.5 rounded-xl shadow-sm border border-[#e8edf4] flex items-center gap-2">
                                 <span class="bg-[#f3e8f4] px-2 py-0.5 rounded text-xs text-[#b496c4]">Beli</span>
                                 <span><span class="text-[#8a7d8d] font-normal">Mulai</span> Rp 300rb</span>
@@ -740,7 +742,7 @@
 
             if(!nama) return;
 
-            const adminWA = "6281818381001"; // Nomor WA Admin Baru
+            const adminWA = "6281818381001"; // Nomor WA Admin Terbaru
             
             const message = `Halo Admin Bunga Cerita! 👋\nSaya ingin memesan kado:\n\n*Nama:* ${nama}\n*No. WA:* ${no_wa || '-'}\n*Kampus / Lokasi:* ${kampus}\n*Jenis Produk:* ${produk}\n*Catatan Khusus:* ${catatan || '-'}\n\nMohon info total harga dan prosedur pembayarannya ya. Terima kasih! ✨`;
 
