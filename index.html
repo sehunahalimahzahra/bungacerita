@@ -1,507 +1,705 @@
-<div class="bg-aesthetic min-h-screen relative py-0 md:py-10 px-0 md:px-6 flex justify-center selection:bg-[#b496c4] selection:text-white">
-      <GlobalStyles />
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunga Cerita - Kado Wisuda & Sidang Aesthetic</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #b496c4;
+        }
 
-      <!-- Main Glass Container (Meniru efek desain yang melayang di tengah) -->
-      <div class="w-full max-w-6xl bg-white/70 backdrop-blur-xl md:rounded-[40px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white/50 overflow-hidden relative">
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #4a3e4d;
+            background: #f8f6f9;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .bg-aesthetic {
+            background: linear-gradient(135deg, #f3e8f4 0%, #e8edf4 50%, #f6e6eb 100%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hilangkan scrollbar */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Animasi */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
         
-        <header class="px-6 md:px-12 py-6 flex items-center justify-between animate-fade-in-up relative z-50" style="animation-delay: 0.1s">
-          <div class="flex items-center gap-2 cursor-pointer">
-            <!-- Ikon Logo -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b496c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
-            <span class="font-serif text-2xl font-semibold tracking-wide text-[#4a3e4d]">Bunga Cerita</span>
-          </div>
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
 
-          <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#8a7d8d]">
-            <a href="#beranda" class="hover:text-[#b496c4] transition-colors">Beranda</a>
-            <a href="#katalog" class="hover:text-[#b496c4] transition-colors">Katalog</a>
-            <a href="#pengiriman" class="hover:text-[#b496c4] transition-colors">Pengiriman</a>
-            <a href="#portofolio" class="hover:text-[#b496c4] transition-colors">Portofolio</a>
-            <a href="#mitra" class="hover:text-[#b496c4] transition-colors">Mitra</a>
-          </nav>
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37,211,102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102, 0); }
+        }
 
-          <a href="#pesan" class="hidden md:flex items-center justify-center bg-[#b496c4] text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-md shadow-[#b496c4]/30 hover:bg-[#9a7ca9] transition-all hover:-translate-y-0.5 cursor-pointer">
-            Pesan Sekarang
-          </a>
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-200px * 8 - 1rem * 8)); }
+        }
 
-          <!-- Mobile Menu Icon & Toggle -->
-          <button 
-            class="md:hidden p-2 text-[#4a3e4d] cursor-pointer hover:bg-[#f3e8f4] rounded-lg transition-colors"
-            onclick="() => setIsMobileMenuOpen(!isMobileMenuOpen)"
-            aria-label="Toggle Mobile Menu"
-          >
-             {isMobileMenuOpen ? (
-                // Ikon Close (X)
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-             ) : (
-                // Ikon Hamburger
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-             )}
-          </button>
-        </header>
+        .animate-scroll-left {
+            animation: scroll-left 30s linear infinite;
+            display: flex;
+            width: max-content;
+        }
 
-        <!-- Dropdown Menu Mobile -->
-        {isMobileMenuOpen && (
-          <div class="md:hidden bg-white/95 backdrop-blur-md absolute top-[80px] left-0 w-full z-40 border-b border-[#f3e8f4] shadow-lg flex flex-col py-4 px-6 animate-fade-in-up">
-            <a href="#beranda" onclick="() => setIsMobileMenuOpen(false)" class="py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">Beranda</a>
-            <a href="#katalog" onclick="() => setIsMobileMenuOpen(false)" class="py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">Katalog</a>
-            <a href="#pengiriman" onclick="() => setIsMobileMenuOpen(false)" class="py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">Pengiriman</a>
-            <a href="#portofolio" onclick="() => setIsMobileMenuOpen(false)" class="py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">Portofolio</a>
-            <a href="#faq" onclick="() => setIsMobileMenuOpen(false)" class="py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">FAQ</a>
-            <a href="#pesan" onclick="() => setIsMobileMenuOpen(false)" class="mt-4 bg-[#b496c4] text-white text-center py-3 rounded-xl font-semibold shadow-md hover:bg-[#9a7ca9] transition-colors">Pesan Sekarang</a>
-          </div>
-        )}
+        .animate-scroll-left:hover {
+            animation-play-state: paused;
+        }
 
-        <section id="beranda" class="px-6 md:px-12 py-10 md:py-20 flex flex-col-reverse md:flex-row items-center gap-12">
-          <!-- Teks Hero -->
-          <div class="w-full md:w-1/2 animate-fade-in-up" style="animation-delay: 0.2s">
-            <div class="inline-block px-4 py-1.5 rounded-full bg-[#f3e8f4] text-[#b496c4] text-xs font-bold tracking-wider mb-6">
-              KHUSUS MAHASISWA TANGSEL
-            </div>
-            <h1 class="font-serif text-4xl md:text-6xl lg:text-[68px] leading-[1.1] text-[#4a3e4d] mb-4">
-              Rayakan Momen <br><i class="text-[#b496c4]">Sidang & Wisuda</i> <br>Lebih Aesthetic
-            </h1>
-            <p class="text-[#b496c4] font-serif text-xl md:text-2xl italic mb-4">"Karena Setiap Momen Layak Diceritakan."</p>
-            <p class="text-[#8a7d8d] text-base md:text-lg mb-6 leading-relaxed max-w-md">
-              Ganti kado biasa dengan papan ucapan akrilik eksklusif & aneka buket premium. Siap antar langsung ke kampus (UIN, Unpam, Bintaro & sekitarnya).
-            </p>
+        /* Tailwind custom utilities overrides */
+        .selection-custom::selection {
+            background-color: #b496c4;
+            color: white;
+        }
+    </style>
+</head>
+<body class="selection-custom">
+
+    <div class="bg-aesthetic min-h-screen relative py-0 md:py-10 px-0 md:px-6 flex justify-center">
+        <!-- Main Glass Container -->
+        <div class="w-full max-w-6xl bg-white/70 backdrop-blur-xl md:rounded-[40px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white/50 overflow-hidden relative">
             
-            <!-- Blok Info Harga Sewa & Beli -->
-            <div class="bg-white/80 border border-[#f3e8f4] rounded-2xl p-4 mb-8 shadow-sm inline-block">
-              <p class="text-[#4a3e4d] font-medium text-sm flex items-center gap-2 mb-2">
-                <span class="text-[#b496c4]">✨</span> Opsi Ramah Kantong Mahasiswa:
-              </p>
-              <div class="flex gap-3 text-sm">
-                <div class="bg-[#f8f6f9] px-3 py-1.5 rounded-lg border border-[#e8edf4]">
-                  <strong>Sewa:</strong> Mulai Rp 60rb
+            <!-- Header -->
+            <header class="px-6 md:px-12 py-6 flex items-center justify-between animate-fade-in-up relative z-50" style="animation-delay: 0.1s">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b496c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
+                    <span class="font-serif text-2xl font-semibold tracking-wide text-[#4a3e4d]">Bunga Cerita</span>
                 </div>
-                <div class="bg-[#f8f6f9] px-3 py-1.5 rounded-lg border border-[#e8edf4]">
-                  <strong>Beli:</strong> Mulai Rp 300rb
-                </div>
-              </div>
+
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#8a7d8d]">
+                    <a href="#beranda" class="hover:text-[#b496c4] transition-colors">Beranda</a>
+                    <a href="#katalog" class="hover:text-[#b496c4] transition-colors">Katalog</a>
+                    <a href="#pengiriman" class="hover:text-[#b496c4] transition-colors">Pengiriman</a>
+                    <a href="#portofolio" class="hover:text-[#b496c4] transition-colors">Portofolio</a>
+                    <a href="#mitra" class="hover:text-[#b496c4] transition-colors">Mitra</a>
+                </nav>
+
+                <a href="#pesan" class="hidden md:flex items-center justify-center bg-[#b496c4] text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-md shadow-[#b496c4]/30 hover:bg-[#9a7ca9] transition-all hover:-translate-y-0.5 cursor-pointer">
+                    Pesan Sekarang
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-[#4a3e4d] cursor-pointer hover:bg-[#f3e8f4] rounded-lg transition-colors" aria-label="Toggle Mobile Menu">
+                    <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </header>
+
+            <!-- Dropdown Menu Mobile -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md absolute top-[80px] left-0 w-full z-40 border-b border-[#f3e8f4] shadow-lg flex-col py-4 px-6 animate-fade-in-up">
+                <a href="#beranda" class="mobile-link py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">Beranda</a>
+                <a href="#katalog" class="mobile-link py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">Katalog</a>
+                <a href="#pengiriman" class="mobile-link py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">Pengiriman</a>
+                <a href="#portofolio" class="mobile-link py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">Portofolio</a>
+                <a href="#faq" class="mobile-link py-3 text-[#4a3e4d] font-medium border-b border-[#f3e8f4]/50 hover:text-[#b496c4] transition-colors">FAQ</a>
+                <a href="#pesan" class="mobile-link mt-4 bg-[#b496c4] text-white text-center py-3 rounded-xl font-semibold shadow-md hover:bg-[#9a7ca9] transition-colors">Pesan Sekarang</a>
             </div>
 
-            <div class="flex flex-wrap items-center gap-4">
-              <a href="#katalog" class="inline-flex items-center justify-center bg-[#b496c4] text-white px-8 py-3.5 rounded-full font-medium shadow-lg shadow-[#b496c4]/40 hover:bg-[#9a7ca9] transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer">
-                Pilih Kado Bestie &rarr;
-              </a>
-              <a href="#portofolio" class="inline-flex items-center justify-center bg-transparent border border-[#d8cce0] text-[#8a7d8d] px-8 py-3.5 rounded-full font-medium hover:border-[#b496c4] hover:text-[#b496c4] transition-all cursor-pointer">
-                Lihat Portofolio
-              </a>
-            </div>
-          </div>
-
-          <!-- Gambar Hero (Estetika Arch/Melengkung) -->
-          <div class="w-full md:w-1/2 flex justify-center relative animate-fade-in-up" style="animation-delay: 0.4s">
-             <!-- Elemen Dekoratif Melayang -->
-             <div class="absolute top-10 -left-10 bg-white p-4 rounded-2xl shadow-xl shadow-black/5 animate-float flex items-center gap-3 z-10 hidden md:flex">
-               <div class="w-10 h-10 rounded-full bg-[#f3e8f4] flex items-center justify-center text-xl">🎓</div>
-               <div>
-                 <p class="text-xs text-[#8a7d8d]">Diskon Mahasiswa</p>
-                 <p class="text-sm font-bold text-[#4a3e4d]">Potongan 10%</p>
-               </div>
-             </div>
-             
-             <!-- Main Image Container -->
-             <div class="relative w-full max-w-[400px] aspect-[4/5] rounded-[200px] rounded-bl-[40px] rounded-br-[40px] overflow-hidden shadow-2xl border-4 border-white/60">
-                 <img src="https://images.unsplash.com/photo-1541250848049-b4f71426cad6?auto=format&fit=crop&q=80&w=600&h=800" alt="Wisuda Kado Aesthetic" class="w-full h-full object-cover">
-                 <div class="absolute inset-0 bg-gradient-to-t from-[#b496c4]/40 to-transparent"></div>
-             </div>
-             
-             <!-- Badge Promo -->
-             <div class="absolute bottom-10 -right-5 bg-[#f3e8f4] p-4 rounded-full shadow-lg border-2 border-white animate-float z-10" style="animation-delay: 1s">
-                 <div class="w-16 h-16 rounded-full border-2 border-[#b496c4] border-dashed flex items-center justify-center bg-white/50 backdrop-blur text-center">
-                    <div>
-                        <p class="text-[10px] text-[#8a7d8d] font-bold leading-none">FREE</p>
-                        <p class="text-sm text-[#b496c4] font-serif font-bold">Ongkir</p>
+            <!-- Hero Section -->
+            <section id="beranda" class="px-6 md:px-12 py-10 md:py-20 flex flex-col-reverse md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2 animate-fade-in-up" style="animation-delay: 0.2s">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-[#f3e8f4] text-[#b496c4] text-xs font-bold tracking-wider mb-6">
+                        KHUSUS MAHASISWA TANGSEL
                     </div>
-                 </div>
-             </div>
-          </div>
-        </section>
+                    <h1 class="font-serif text-4xl md:text-6xl lg:text-[68px] leading-[1.1] text-[#4a3e4d] mb-4">
+                        Rayakan Momen <br/><i class="text-[#b496c4]">Sidang & Wisuda</i> <br/>Lebih Aesthetic
+                    </h1>
+                    <p class="text-[#b496c4] font-serif text-xl md:text-2xl italic mb-4">"Karena Setiap Momen Layak Diceritakan."</p>
+                    <p class="text-[#8a7d8d] text-base md:text-lg mb-6 leading-relaxed max-w-md">
+                        Ganti kado biasa dengan papan ucapan akrilik eksklusif & aneka buket premium. Siap antar langsung ke kampus (UIN, Unpam, Bintaro & sekitarnya).
+                    </p>
+                    
+                    <div class="bg-white/80 border border-[#f3e8f4] rounded-2xl p-4 mb-8 shadow-sm inline-block">
+                        <p class="text-[#4a3e4d] font-medium text-sm flex items-center gap-2 mb-2">
+                            <span class="text-[#b496c4]">✨</span> Opsi Ramah Kantong Mahasiswa:
+                        </p>
+                        <div class="flex gap-3 text-sm">
+                            <div class="bg-[#f8f6f9] px-3 py-1.5 rounded-lg border border-[#e8edf4]">
+                                <strong>Sewa:</strong> Mulai Rp 60rb
+                            </div>
+                            <div class="bg-[#f8f6f9] px-3 py-1.5 rounded-lg border border-[#e8edf4]">
+                                <strong>Beli:</strong> Mulai Rp 300rb
+                            </div>
+                        </div>
+                    </div>
 
-        <section id="katalog" class="px-6 md:px-12 py-16 bg-white/40">
-          <div class="flex justify-between items-end mb-10 animate-fade-in-up">
-            <div>
-              <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-2">Katalog Akrilik & Buket</h2>
-              <p class="text-[#8a7d8d]">Pilihan kado eksklusif untuk setiap pencapaian akademik.</p>
-            </div>
-            <button class="hidden md:flex items-center gap-2 text-[#b496c4] font-medium hover:text-[#9a7ca9] cursor-pointer">
-              Lihat Semua <span class="text-xl">&rarr;</span>
-            </button>
-          </div>
-
-          <!-- Area Scroll Horizontal untuk Mobile, Grid untuk Desktop -->
-          <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar animate-fade-in-up" style="animation-delay: 0.2s">
-            {products.map((item) => (
-              <div 
-                key="item.id" 
-                class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer"
-              >
-                <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
-                  <img src="item.img" alt="item.name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                  <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                    {item.category}
-                  </div>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#katalog" class="inline-flex items-center justify-center bg-[#b496c4] text-white px-8 py-3.5 rounded-full font-medium shadow-lg shadow-[#b496c4]/40 hover:bg-[#9a7ca9] transition-all hover:shadow-xl hover:-translate-y-1 cursor-pointer">
+                            Pilih Kado Bestie &rarr;
+                        </a>
+                        <a href="#portofolio" class="inline-flex items-center justify-center bg-transparent border border-[#d8cce0] text-[#8a7d8d] px-8 py-3.5 rounded-full font-medium hover:border-[#b496c4] hover:text-[#b496c4] transition-all cursor-pointer">
+                            Lihat Portofolio
+                        </a>
+                    </div>
                 </div>
-                <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">{item.name}</h3>
-                <div class="flex justify-between items-center mt-2">
-                  <p class="text-[#8a7d8d] font-medium">{item.price}</p>
-                  <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">
-                    +
-                  </button>
+
+                <div class="w-full md:w-1/2 flex justify-center relative animate-fade-in-up" style="animation-delay: 0.4s">
+                    <div class="absolute top-10 -left-10 bg-white p-4 rounded-2xl shadow-xl shadow-black/5 animate-float flex items-center gap-3 z-10 hidden md:flex">
+                        <div class="w-10 h-10 rounded-full bg-[#f3e8f4] flex items-center justify-center text-xl">🎓</div>
+                        <div>
+                            <p class="text-xs text-[#8a7d8d]">Diskon Mahasiswa</p>
+                            <p class="text-sm font-bold text-[#4a3e4d]">Potongan 10%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative w-full max-w-[400px] aspect-[4/5] rounded-[200px] rounded-bl-[40px] rounded-br-[40px] overflow-hidden shadow-2xl border-4 border-white/60">
+                        <img src="https://images.unsplash.com/photo-1541250848049-b4f71426cad6?auto=format&fit=crop&q=80&w=600&h=800" alt="Wisuda Kado Aesthetic" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#b496c4]/40 to-transparent"></div>
+                    </div>
+                    
+                    <div class="absolute bottom-10 -right-5 bg-[#f3e8f4] p-4 rounded-full shadow-lg border-2 border-white animate-float z-10" style="animation-delay: 1s">
+                        <div class="w-16 h-16 rounded-full border-2 border-[#b496c4] border-dashed flex items-center justify-center bg-white/50 backdrop-blur text-center">
+                            <div>
+                                <p class="text-[10px] text-[#8a7d8d] font-bold leading-none">FREE</p>
+                                <p class="text-sm text-[#b496c4] font-serif font-bold">Ongkir</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        <section id="pengiriman" class="px-6 md:px-12 py-16 animate-fade-in-up">
-          <div class="bg-gradient-to-r from-[#fdfbfb] to-[#f3e8f4] rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 shadow-sm border border-white">
-            <div class="w-full md:w-1/2">
-              <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-4">Pengiriman Aman & Tepat Waktu</h2>
-              <p class="text-[#8a7d8d] mb-8 leading-relaxed">
-                Nggak perlu repot bawa kado besar naik motor. Kami antar langsung ke kampus (UIN, Unpam, UMJ, Bintaro) tepat di jam sidang/wisuda sahabatmu.
-              </p>
-              
-              <div class="flex flex-col gap-5">
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl">🛵</div>
-                  <div>
-                    <h4 class="font-bold text-[#4a3e4d]">Diantar ke Lokasi</h4>
-                    <p class="text-sm text-[#8a7d8d]">Langsung ke gedung fakultas.</p>
-                  </div>
+            <!-- Katalog Section -->
+            <section id="katalog" class="px-6 md:px-12 py-16 bg-white/40">
+                <div class="flex justify-between items-end mb-10 animate-fade-in-up">
+                    <div>
+                        <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-2">Katalog Akrilik & Buket</h2>
+                        <p class="text-[#8a7d8d]">Pilihan kado eksklusif untuk setiap pencapaian akademik.</p>
+                    </div>
+                    <button class="hidden md:flex items-center gap-2 text-[#b496c4] font-medium hover:text-[#9a7ca9] cursor-pointer">
+                        Lihat Semua <span class="text-xl">&rarr;</span>
+                    </button>
                 </div>
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl">✨</div>
-                  <div>
-                    <h4 class="font-bold text-[#4a3e4d]">Kualitas Terjamin</h4>
-                    <p class="text-sm text-[#8a7d8d]">Bunga segar & tulisan rapi.</p>
-                  </div>
+
+                <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar animate-fade-in-up" style="animation-delay: 0.2s">
+                    <!-- Produk 1 -->
+                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
+                            <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&q=80&w=400&h=500" alt="Sempro Mini Akrilik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Sempro / Proposal</div>
+                        </div>
+                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Sempro Mini Akrilik</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-[#8a7d8d] font-medium">Rp 120.000</p>
+                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
+                        </div>
+                    </div>
+                    <!-- Produk 2 -->
+                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
+                            <img src="https://images.unsplash.com/photo-1563241597-12a414531d5e?auto=format&fit=crop&q=80&w=400&h=500" alt="Buket Bunga Premium" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Buket Bunga</div>
+                        </div>
+                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Buket Bunga Premium</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-[#8a7d8d] font-medium">Rp 150.000</p>
+                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
+                        </div>
+                    </div>
+                    <!-- Produk 3 -->
+                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
+                            <img src="https://images.unsplash.com/photo-1523580494112-071dcb92a71d?auto=format&fit=crop&q=80&w=400&h=500" alt="Sidang Classic Akrilik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Sidang Skripsi</div>
+                        </div>
+                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Sidang Classic Akrilik</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-[#8a7d8d] font-medium">Rp 175.000</p>
+                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
+                        </div>
+                    </div>
+                    <!-- Produk 4 -->
+                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
+                            <img src="https://images.unsplash.com/photo-1613728913303-3486a4e32057?auto=format&fit=crop&q=80&w=400&h=500" alt="Buket Uang Aesthetic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Buket Uang</div>
+                        </div>
+                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Buket Uang Aesthetic</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-[#8a7d8d] font-medium">Rp 300.000</p>
+                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
+                        </div>
+                    </div>
+                    <!-- Produk 5 -->
+                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
+                            <img src="https://images.unsplash.com/photo-1541250848049-b4f71426cad6?auto=format&fit=crop&q=80&w=400&h=500" alt="Graduation Luxe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Wisuda</div>
+                        </div>
+                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Graduation Luxe</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-[#8a7d8d] font-medium">Rp 250.000</p>
+                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
+                        </div>
+                    </div>
+                    <!-- Produk 6 -->
+                    <div class="min-w-[75%] md:min-w-0 md:w-1/4 bg-white p-4 rounded-3xl shadow-sm border border-[#f3e8f4] snap-center shrink-0 group hover:shadow-xl hover:shadow-[#b496c4]/10 transition-all duration-300 cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#f8f6f9]">
+                            <img src="https://images.unsplash.com/photo-1575224300306-1b8da36134ec?auto=format&fit=crop&q=80&w=400&h=500" alt="Buket Snack & Boneka" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#4a3e4d] text-xs font-bold px-3 py-1 rounded-full shadow-sm">Buket Snack</div>
+                        </div>
+                        <h3 class="font-serif text-xl text-[#4a3e4d] mb-1 group-hover:text-[#b496c4] transition-colors">Buket Snack & Boneka</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-[#8a7d8d] font-medium">Rp 135.000</p>
+                            <button class="w-8 h-8 rounded-full bg-[#f3e8f4] text-[#b496c4] flex items-center justify-center group-hover:bg-[#b496c4] group-hover:text-white transition-colors">+</button>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              
-              <!-- Promo Gratis Ongkir -->
-              <div class="mt-8 inline-flex items-center gap-4 bg-[#f3e8f4]/60 border border-[#d8cce0] p-4 rounded-2xl cursor-pointer hover:bg-[#f3e8f4] transition-colors">
-                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#b496c4]">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </section>
+
+            <!-- Pengiriman Section -->
+            <section id="pengiriman" class="px-6 md:px-12 py-16 animate-fade-in-up">
+                <div class="bg-gradient-to-r from-[#fdfbfb] to-[#f3e8f4] rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 shadow-sm border border-white">
+                    <div class="w-full md:w-1/2">
+                        <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-4">Pengiriman Aman & Tepat Waktu</h2>
+                        <p class="text-[#8a7d8d] mb-8 leading-relaxed">
+                            Nggak perlu repot bawa kado besar naik motor. Kami antar langsung ke kampus (UIN, Unpam, UMJ, Bintaro) tepat di jam sidang/wisuda sahabatmu.
+                        </p>
+                        
+                        <div class="flex flex-col gap-5">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl">🛵</div>
+                                <div>
+                                    <h4 class="font-bold text-[#4a3e4d]">Diantar ke Lokasi</h4>
+                                    <p class="text-sm text-[#8a7d8d]">Langsung ke gedung fakultas.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl">✨</div>
+                                <div>
+                                    <h4 class="font-bold text-[#4a3e4d]">Kualitas Terjamin</h4>
+                                    <p class="text-sm text-[#8a7d8d]">Bunga segar & tulisan rapi.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 inline-flex items-center gap-4 bg-[#f3e8f4]/60 border border-[#d8cce0] p-4 rounded-2xl cursor-pointer hover:bg-[#f3e8f4] transition-colors">
+                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#b496c4]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[#4a3e4d] text-sm">PROMO GRATIS ONGKIR! 🎉</h4>
+                                <p class="text-xs text-[#8a7d8d] mt-0.5">*S&K Berlaku. Khusus area kampus UIN & Unpam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full md:w-1/2 h-64 md:h-80 bg-white rounded-3xl shadow-inner relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-[#e8edf4] opacity-50"></div>
+                        <img src="https://images.unsplash.com/photo-1550505096-7bbbc97576f7?auto=format&fit=crop&q=80&w=800&h=600" alt="Pengiriman Bunga" class="w-full h-full object-cover mix-blend-multiply opacity-80" />
+                        <div class="absolute bg-white/90 backdrop-blur px-6 py-3 rounded-full shadow-lg font-serif text-[#b496c4] font-bold text-lg animate-float text-center">
+                            Khusus Area Tangerang Selatan
+                        </div>
+                    </div>
                 </div>
-                <div>
-                  <h4 class="font-bold text-[#4a3e4d] text-sm">PROMO GRATIS ONGKIR! 🎉</h4>
-                  <p class="text-xs text-[#8a7d8d] mt-0.5">*S&K Berlaku. Khusus area kampus UIN & Unpam.</p>
+            </section>
+
+            <!-- Portofolio Section -->
+            <section id="portofolio" class="py-16 overflow-hidden animate-fade-in-up bg-white/40 border-y border-[#f3e8f4]">
+                <div class="text-center mb-10 px-6 md:px-12">
+                    <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-2">Portofolio & Galeri Kebahagiaan</h2>
+                    <p class="text-[#8a7d8d]">Kumpulan karya terbaik kami dan senyum mereka di hari spesial.</p>
                 </div>
-              </div>
-            </div>
-            
-            <div class="w-full md:w-1/2 h-64 md:h-80 bg-white rounded-3xl shadow-inner relative overflow-hidden flex items-center justify-center">
-                <div class="absolute inset-0 bg-[#e8edf4] opacity-50"></div>
-                <img src="https://images.unsplash.com/photo-1550505096-7bbbc97576f7?auto=format&fit=crop&q=80&w=800&h=600" alt="Pengiriman Bunga" class="w-full h-full object-cover mix-blend-multiply opacity-80">
-                <div class="absolute bg-white/90 backdrop-blur px-6 py-3 rounded-full shadow-lg font-serif text-[#b496c4] font-bold text-lg animate-float text-center">
-                  Khusus Area Tangerang Selatan
+
+                <div class="flex flex-col gap-6 relative">
+                    <!-- Row 1 -->
+                    <div class="flex gap-4 animate-scroll-left px-4" id="portfolio-row-1">
+                        <!-- Konten akan di-generate via JavaScript untuk mengurangi repetisi kode HTML panjang -->
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="flex gap-4 animate-scroll-left px-4" style="animation-duration: 35s;" id="portfolio-row-2">
+                         <!-- Konten akan di-generate via JavaScript -->
+                    </div>
+                    
+                    <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#fdfbfb] to-transparent pointer-events-none"></div>
+                    <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#fdfbfb] to-transparent pointer-events-none"></div>
                 </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        {}
-        <section id="portofolio" class="py-16 overflow-hidden animate-fade-in-up bg-white/40 border-y border-[#f3e8f4]">
-          <div class="text-center mb-10 px-6 md:px-12">
-            <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-2">Portofolio & Galeri Kebahagiaan</h2>
-            <p class="text-[#8a7d8d]">Kumpulan karya terbaik kami dan senyum mereka di hari spesial.</p>
-          </div>
-          
-          <style>{`
-            @keyframes scroll-left {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(calc(-200px * 8 - 1rem * 8)); } /* lebar gambar * jumlah gambar ori + gap * jumlah gap */
-            }
-            .animate-scroll-left {
-              animation: scroll-left 30s linear infinite;
-              display: flex;
-              width: max-content;
-            }
-            /* Pause animasi saat hover */
-            .animate-scroll-left:hover {
-              animation-play-state: paused;
-            }
-          `}</style>
-
-          <div class="flex flex-col gap-6 relative">
-             <!-- Row 1 - Bergerak ke kiri -->
-             <div class="flex gap-4 animate-scroll-left px-4">
-              {[...portfolioImagesRow1, ...portfolioImagesRow1].map((img, idx) => (
-                <div key="`row1-${idx"`} class="w-[180px] h-[220px] md:w-[220px] md:h-[260px] flex-shrink-0 relative overflow-hidden rounded-[24px] shadow-sm group">
-                  <img src="img" alt="`Portofolio ${idx"`} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
-                  <div class="absolute inset-0 bg-gradient-to-t from-[#b496c4]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <!-- Testimoni Section -->
+            <section id="testimoni" class="px-6 md:px-12 py-16 bg-[#fdfbfb] rounded-[40px] border border-[#f3e8f4] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.03)] mx-4 md:mx-12 my-10 animate-fade-in-up">
+                <div class="text-center md:text-left flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
+                    <div>
+                        <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-2">Apa Kata Mereka?</h2>
+                        <p class="text-[#8a7d8d]">Cerita jujur dari para mahasiswa Tangsel.</p>
+                    </div>
                 </div>
-              ))}
-            </div>
-
-            <!-- Row 2 - Bergerak ke kiri (Kecepatan atau delay berbeda sedikit) -->
-            <div class="flex gap-4 animate-scroll-left px-4" style="animation-duration: 35s">
-              {[...portfolioImagesRow2, ...portfolioImagesRow2].map((img, idx) => (
-                <div key="`row2-${idx"`} class="w-[180px] h-[220px] md:w-[220px] md:h-[260px] flex-shrink-0 relative overflow-hidden rounded-[24px] shadow-sm group">
-                  <img src="img" alt="`Portofolio ${idx"`} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
-                  <div class="absolute inset-0 bg-gradient-to-t from-[#b496c4]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Testi 1 -->
+                    <div class="bg-white p-8 rounded-[32px] shadow-sm border border-[#f3e8f4] hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer">
+                        <div class="flex gap-1 mb-5 text-[#b496c4]">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-[#4a3e4d] mb-8 text-sm leading-relaxed italic">"Keren banget! Papan akriliknya rapi dan bunganya fresh. Admin responsif, desain revisi sampe sreg."</p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150" alt="Siti Rahma" class="w-12 h-12 rounded-full object-cover bg-[#f3e8f4] border-2 border-white shadow-sm" />
+                            <div>
+                                <p class="text-[#4a3e4d] font-bold text-sm">Siti Rahma</p>
+                                <p class="text-[#8a7d8d] text-xs">UIN Jakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testi 2 -->
+                    <div class="bg-white p-8 rounded-[32px] shadow-sm border border-[#f3e8f4] hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer">
+                        <div class="flex gap-1 mb-5 text-[#b496c4]">
+                             <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <!-- (Anggap 5 bintang ter-render) -->
+                        </div>
+                        <p class="text-[#4a3e4d] mb-8 text-sm leading-relaxed italic">"Pesan H-1 langsung jadi dan diantar ke kampus. Temenku seneng banget dapet buket pas wisuda. Recommended parah!"</p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150" alt="Budi Santoso" class="w-12 h-12 rounded-full object-cover bg-[#f3e8f4] border-2 border-white shadow-sm" />
+                            <div>
+                                <p class="text-[#4a3e4d] font-bold text-sm">Budi Santoso</p>
+                                <p class="text-[#8a7d8d] text-xs">Universitas Pamulang</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testi 3 -->
+                    <div class="bg-white p-8 rounded-[32px] shadow-sm border border-[#f3e8f4] hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer">
+                        <div class="flex gap-1 mb-5 text-[#b496c4]">
+                             <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-[#4a3e4d] mb-8 text-sm leading-relaxed italic">"Harganya ramah di kantong mahasiswa, tapi kualitasnya sultan. Free ongkirnya beneran no hoax!"</p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150" alt="Nadia S." class="w-12 h-12 rounded-full object-cover bg-[#f3e8f4] border-2 border-white shadow-sm" />
+                            <div>
+                                <p class="text-[#4a3e4d] font-bold text-sm">Nadia S.</p>
+                                <p class="text-[#8a7d8d] text-xs">STAN Bintaro</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              ))}
-            </div>
-            
-            <!-- Gradient overlay di kanan dan kiri untuk efek fade out di tepi -->
-            <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#fdfbfb] to-transparent pointer-events-none"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#fdfbfb] to-transparent pointer-events-none"></div>
-          </div>
-        </section>
+            </section>
 
-        <section id="testimoni" class="px-6 md:px-12 py-16 bg-[#fdfbfb] rounded-[40px] border border-[#f3e8f4] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.03)] mx-4 md:mx-12 my-10 animate-fade-in-up">
-          <div class="text-center md:text-left flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
-            <div>
-              <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-2">Apa Kata Mereka?</h2>
-              <p class="text-[#8a7d8d]">Cerita jujur dari para mahasiswa Tangsel.</p>
-            </div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testi) => (
-              <div key="testi.id" class="bg-white p-8 rounded-[32px] shadow-sm border border-[#f3e8f4] hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <div class="flex gap-1 mb-5 text-[#b496c4]">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key="i" class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                  ))}
+            <!-- Mitra Section -->
+            <section id="mitra" class="px-6 md:px-12 py-8 animate-fade-in-up">
+                <div class="bg-gradient-to-br from-[#b496c4] to-[#c7abc2] rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between shadow-lg relative overflow-hidden">
+                    <div class="absolute -right-20 -top-20 w-80 h-80 bg-white/20 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-[#f3e8f4]/20 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="relative z-10 w-full md:w-2/3 text-white mb-8 md:mb-0 text-center md:text-left">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur text-white text-xs font-bold tracking-wider mb-4 border border-white/30">
+                            PROGRAM PARTNERSHIP
+                        </span>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Punya Banyak Circle Kampus?</h2>
+                        <p class="text-white/90 text-sm md:text-base max-w-lg mx-auto md:mx-0 leading-relaxed">
+                            Yuk gabung jadi Mitra Reseller Bunga Cerita! Tambah cuan untuk uang jajan dan nikmati komisi menggiurkan dari setiap pesanan kado teman-temanmu.
+                        </p>
+                    </div>
+                    <div class="relative z-10 w-full md:w-auto flex justify-center">
+                        <button class="bg-white text-[#b496c4] font-bold px-8 py-4 rounded-full shadow-lg hover:bg-[#f8f6f9] hover:scale-105 transition-all w-full md:w-auto cursor-pointer">
+                            Daftar Reseller &rarr;
+                        </button>
+                    </div>
                 </div>
-                <p class="text-[#4a3e4d] mb-8 text-sm leading-relaxed italic">"{testi.text}"</p>
-                <div class="flex items-center gap-4">
-                  <img src="testi.img" alt="testi.name" class="w-12 h-12 rounded-full object-cover bg-[#f3e8f4] border-2 border-white shadow-sm">
-                  <div>
-                    <p class="text-[#4a3e4d] font-bold text-sm">{testi.name}</p>
-                    <p class="text-[#8a7d8d] text-xs">{testi.campus}</p>
-                  </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq" class="px-6 md:px-12 py-16 animate-fade-in-up">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-4">Tanya Jawab (FAQ)</h2>
+                        <p class="text-[#8a7d8d]">Jawaban cepat untuk pertanyaan yang sering ditanyakan sebelum memesan.</p>
+                    </div>
+                    
+                    <div class="flex flex-col gap-4">
+                        <details class="group bg-white rounded-2xl shadow-sm border border-[#f3e8f4] overflow-hidden cursor-pointer">
+                            <summary class="flex justify-between items-center font-semibold list-none p-5 text-[#4a3e4d] group-open:text-[#b496c4] transition-colors focus:outline-none [&::-webkit-details-marker]:hidden">
+                                <span>Berapa hari proses pengerjaannya?</span>
+                                <span class="transition-transform duration-300 group-open:rotate-180 text-[#b496c4]">
+                                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                                </span>
+                            </summary>
+                            <div class="p-5 pt-0 text-[#8a7d8d] text-sm leading-relaxed border-t border-transparent group-open:border-[#f3e8f4]">
+                                Proses pengerjaan normal kami sangat cepat, hanya membutuhkan waktu <strong>1 hari saja</strong> setelah detail desain disetujui.
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-2xl shadow-sm border border-[#f3e8f4] overflow-hidden cursor-pointer">
+                            <summary class="flex justify-between items-center font-semibold list-none p-5 text-[#4a3e4d] group-open:text-[#b496c4] transition-colors focus:outline-none [&::-webkit-details-marker]:hidden">
+                                <span>Apakah bisa pesan mendadak (H-1)?</span>
+                                <span class="transition-transform duration-300 group-open:rotate-180 text-[#b496c4]">
+                                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                                </span>
+                            </summary>
+                            <div class="p-5 pt-0 text-[#8a7d8d] text-sm leading-relaxed border-t border-transparent group-open:border-[#f3e8f4]">
+                                <strong>Tentu bisa!</strong> Kami melayani pemesanan kilat H-1. Silakan langsung hubungi Admin via WhatsApp untuk memastikan ketersediaan slot pengiriman di hari tersebut.
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-2xl shadow-sm border border-[#f3e8f4] overflow-hidden cursor-pointer">
+                            <summary class="flex justify-between items-center font-semibold list-none p-5 text-[#4a3e4d] group-open:text-[#b496c4] transition-colors focus:outline-none [&::-webkit-details-marker]:hidden">
+                                <span>Bagaimana jika akrilik pecah saat pengiriman?</span>
+                                <span class="transition-transform duration-300 group-open:rotate-180 text-[#b496c4]">
+                                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                                </span>
+                            </summary>
+                            <div class="p-5 pt-0 text-[#8a7d8d] text-sm leading-relaxed border-t border-transparent group-open:border-[#f3e8f4]">
+                                Kamu tidak perlu khawatir. Kami memberikan garansi! Jika barang diterima dalam keadaan rusak atau pecah, <strong>kami akan bertanggung jawab penuh tanpa membebani customer</strong> (diganti baru atau kompensasi).
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-2xl shadow-sm border border-[#f3e8f4] overflow-hidden cursor-pointer">
+                            <summary class="flex justify-between items-center font-semibold list-none p-5 text-[#4a3e4d] group-open:text-[#b496c4] transition-colors focus:outline-none [&::-webkit-details-marker]:hidden">
+                                <span>Apakah bisa custom desain di luar katalog?</span>
+                                <span class="transition-transform duration-300 group-open:rotate-180 text-[#b496c4]">
+                                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                                </span>
+                            </summary>
+                            <div class="p-5 pt-0 text-[#8a7d8d] text-sm leading-relaxed border-t border-transparent group-open:border-[#f3e8f4]">
+                                <strong>Sangat bisa!</strong> Kamu bebas <em>request</em> model desain, referensi warna, maupun nuansa bunga. Cukup kirimkan contoh gambar yang kamu inginkan ke WhatsApp Admin.
+                            </div>
+                        </details>
+                    </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        <section id="mitra" class="px-6 md:px-12 py-8 animate-fade-in-up">
-          <div class="bg-gradient-to-br from-[#b496c4] to-[#c7abc2] rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between shadow-lg relative overflow-hidden">
-            <div class="absolute -right-20 -top-20 w-80 h-80 bg-white/20 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-[#f3e8f4]/20 rounded-full blur-2xl pointer-events-none"></div>
-            <div class="relative z-10 w-full md:w-2/3 text-white mb-8 md:mb-0 text-center md:text-left">
-              <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur text-white text-xs font-bold tracking-wider mb-4 border border-white/30">
-                PROGRAM PARTNERSHIP
-              </span>
-              <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Punya Banyak Circle Kampus?</h2>
-              <p class="text-white/90 text-sm md:text-base max-w-lg mx-auto md:mx-0 leading-relaxed">
-                Yuk gabung jadi Mitra Reseller Bunga Cerita! Tambah cuan untuk uang jajan dan nikmati komisi menggiurkan dari setiap pesanan kado teman-temanmu.
-              </p>
-            </div>
-            <div class="relative z-10 w-full md:w-auto flex justify-center">
-              <button class="bg-white text-[#b496c4] font-bold px-8 py-4 rounded-full shadow-lg hover:bg-[#f8f6f9] hover:scale-105 transition-all w-full md:w-auto cursor-pointer">
-                Daftar Reseller &rarr;
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION FAQ (Tanya Jawab) -->
-        <section id="faq" class="px-6 md:px-12 py-16 animate-fade-in-up">
-          <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-10">
-              <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-4">Tanya Jawab (FAQ)</h2>
-              <p class="text-[#8a7d8d]">Jawaban cepat untuk pertanyaan yang sering ditanyakan sebelum memesan.</p>
-            </div>
-            
-            <div class="flex flex-col gap-4">
-              <details class="group bg-white rounded-2xl shadow-sm border border-[#f3e8f4] overflow-hidden cursor-pointer">
-                <summary class="flex justify-between items-center font-semibold list-none p-5 text-[#4a3e4d] group-open:text-[#b496c4] transition-colors focus:outline-none [&::-webkit-details-marker]:hidden">
-                  <span>Berapa hari proses pengerjaannya?</span>
-                  <span class="transition-transform duration-300 group-open:rotate-180 text-[#b496c4]">
-                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                  </span>
-                </summary>
-                <div class="p-5 pt-0 text-[#8a7d8d] text-sm leading-relaxed border-t border-transparent group-open:border-[#f3e8f4]">
-                  Proses pengerjaan normal kami sangat cepat, hanya membutuhkan waktu <strong>1 hari saja</strong> setelah detail desain disetujui.
+            <!-- Form Pemesanan -->
+            <section id="pesan" class="px-6 md:px-12 py-16 bg-white/60 border-t border-[#f3e8f4] animate-fade-in-up">
+                <div class="max-w-3xl mx-auto text-center mb-10">
+                    <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-4">Pesan Custom Dalam 1 Menit</h2>
+                    <p class="text-[#8a7d8d]">Isi data di bawah ini, admin kami akan segera mengirimkan preview desain ke WhatsApp kamu.</p>
                 </div>
-              </details>
 
-              <details class="group bg-white rounded-2xl shadow-sm border border-[#f3e8f4] overflow-hidden cursor-pointer">
-                <summary class="flex justify-between items-center font-semibold list-none p-5 text-[#4a3e4d] group-open:text-[#b496c4] transition-colors focus:outline-none [&::-webkit-details-marker]:hidden">
-                  <span>Apakah bisa pesan mendadak (H-1)?</span>
-                  <span class="transition-transform duration-300 group-open:rotate-180 text-[#b496c4]">
-                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                  </span>
-                </summary>
-                <div class="p-5 pt-0 text-[#8a7d8d] text-sm leading-relaxed border-t border-transparent group-open:border-[#f3e8f4]">
-                  <strong>Tentu bisa!</strong> Kami melayani pemesanan kilat H-1. Silakan langsung hubungi Admin via WhatsApp untuk memastikan ketersediaan slot pengiriman di hari tersebut.
+                <form id="order-form" class="max-w-4xl mx-auto bg-white p-8 md:p-10 rounded-[40px] shadow-[0_10px_40px_-10px_rgba(180,150,196,0.15)] border border-[#f3e8f4]">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-semibold text-[#4a3e4d] ml-2">Nama Pemesan <span class="text-red-400">*</span></label>
+                            <input type="text" name="nama" required placeholder="Cth: Sarah (Fikom)" class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d]" />
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-semibold text-[#4a3e4d] ml-2">No. WhatsApp</label>
+                            <input type="tel" name="no_wa" placeholder="0812-xxxx-xxxx" class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d]" />
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-semibold text-[#4a3e4d] ml-2">Pilih Kampus / Lokasi</label>
+                            <select name="kampus" class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d] appearance-none cursor-pointer">
+                                <option value="Belum Ditentukan">Pilih Kampus di Tangsel...</option>
+                                <option value="UIN Syarif Hidayatullah">UIN Syarif Hidayatullah</option>
+                                <option value="Universitas Pamulang">Universitas Pamulang</option>
+                                <option value="Universitas Muhammadiyah Jakarta">Universitas Muhammadiyah Jakarta</option>
+                                <option value="PKN STAN Bintaro">PKN STAN Bintaro</option>
+                                <option value="Lokasi Lainnya">Lokasi Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-semibold text-[#4a3e4d] ml-2">Jenis Produk</label>
+                            <select name="produk" class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d] appearance-none cursor-pointer">
+                                <option value="Papan Akrilik Sempro / Sidang">Papan Akrilik Sempro / Sidang</option>
+                                <option value="Papan Akrilik Wisuda">Papan Akrilik Wisuda</option>
+                                <option value="Buket Bunga">Buket Bunga</option>
+                                <option value="Buket Uang / Snack">Buket Uang / Snack</option>
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col gap-2 md:col-span-2">
+                            <label class="text-sm font-semibold text-[#4a3e4d] ml-2">Catatan Khusus (Tulisan/Gelar/Warna)</label>
+                            <textarea name="catatan" rows="3" placeholder="Cth: Happy Graduation Budi Santoso, S.Kom. Nuansa warna pink." class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d] resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full mt-8 flex items-center justify-center gap-2 bg-[#b496c4] text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-[#b496c4]/30 hover:bg-[#9a7ca9] transition-all active:scale-[0.98] cursor-pointer">
+                        <span>Kirim via WhatsApp</span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Footer -->
+            <footer class="px-6 md:px-12 py-10 text-center border-t border-[#f3e8f4]/50 bg-white/30">
+                <p class="font-serif text-3xl font-semibold text-[#b496c4] mb-2 tracking-wide">Bunga Cerita</p>
+                <p class="text-base text-[#4a3e4d] font-medium mb-4 italic">"Karena Setiap Momen Layak Diceritakan."</p>
+                <p class="text-sm text-[#8a7d8d] mb-6 max-w-sm mx-auto leading-relaxed">
+                    Membawa senyum di setiap perayaan akademik sahabat. <br/>Tangerang Selatan, Indonesia.
+                </p>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-sm text-[#4a3e4d] mb-8 bg-white/60 py-5 px-8 rounded-[24px] inline-flex shadow-sm border border-[#f3e8f4]">
+                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                        <span class="font-bold mb-1 text-[#b496c4] flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Jam Operasional
+                        </span>
+                        <span class="text-[#8a7d8d]">Buka Setiap Hari : 08.00 - 20.00 WIB</span>
+                    </div>
+                    <div class="hidden md:block w-px h-10 bg-[#d8cce0]"></div>
+                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                        <span class="font-bold mb-1 text-[#b496c4] flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            Metode Pembayaran
+                        </span>
+                        <span class="text-[#8a7d8d]">QRIS & Transfer Bank</span>
+                    </div>
                 </div>
-              </details>
 
-              <details class="group bg-white rounded-2xl shadow-sm border border-[#f3e8f4] overflow-hidden cursor-pointer">
-                <summary class="flex justify-between items-center font-semibold list-none p-5 text-[#4a3e4d] group-open:text-[#b496c4] transition-colors focus:outline-none [&::-webkit-details-marker]:hidden">
-                  <span>Bagaimana jika akrilik pecah saat pengiriman?</span>
-                  <span class="transition-transform duration-300 group-open:rotate-180 text-[#b496c4]">
-                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                  </span>
-                </summary>
-                <div class="p-5 pt-0 text-[#8a7d8d] text-sm leading-relaxed border-t border-transparent group-open:border-[#f3e8f4]">
-                  Kamu tidak perlu khawatir. Kami memberikan garansi! Jika barang diterima dalam keadaan rusak atau pecah, <strong>kami akan bertanggung jawab penuh tanpa membebani customer</strong> (diganti baru atau kompensasi).
+                <div class="flex justify-center gap-6 text-sm font-medium text-[#4a3e4d]">
+                    <a href="#" class="hover:text-[#b496c4] transition-colors cursor-pointer flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="#" class="hover:text-[#b496c4] transition-colors cursor-pointer flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
+                        TikTok
+                    </a>
                 </div>
-              </details>
-
-              <details class="group bg-white rounded-2xl shadow-sm border border-[#f3e8f4] overflow-hidden cursor-pointer">
-                <summary class="flex justify-between items-center font-semibold list-none p-5 text-[#4a3e4d] group-open:text-[#b496c4] transition-colors focus:outline-none [&::-webkit-details-marker]:hidden">
-                  <span>Apakah bisa custom desain di luar katalog?</span>
-                  <span class="transition-transform duration-300 group-open:rotate-180 text-[#b496c4]">
-                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                  </span>
-                </summary>
-                <div class="p-5 pt-0 text-[#8a7d8d] text-sm leading-relaxed border-t border-transparent group-open:border-[#f3e8f4]">
-                  <strong>Sangat bisa!</strong> Kamu bebas <em>request</em> model desain, referensi warna, maupun nuansa bunga. Cukup kirimkan contoh gambar yang kamu inginkan ke WhatsApp Admin.
-                </div>
-              </details>
-            </div>
-          </div>
-        </section>
-
-        <section id="pesan" class="px-6 md:px-12 py-16 bg-white/60 border-t border-[#f3e8f4] animate-fade-in-up">
-          <div class="max-w-3xl mx-auto text-center mb-10">
-            <h2 class="font-serif text-3xl md:text-4xl text-[#4a3e4d] mb-4">Pesan Custom Dalam 1 Menit</h2>
-            <p class="text-[#8a7d8d]">Isi data di bawah ini, admin kami akan segera mengirimkan preview desain ke WhatsApp kamu.</p>
-          </div>
-
-          <!-- Form dihubungkan dengan fungsi handleOrderSubmit -->
-          <form onsubmit="handleOrderSubmit" class="max-w-4xl mx-auto bg-white p-8 md:p-10 rounded-[40px] shadow-[0_10px_40px_-10px_rgba(180,150,196,0.15)] border border-[#f3e8f4]">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
-              <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-[#4a3e4d] ml-2">Nama Pemesan <span class="text-red-400">*</span></label>
-                <input 
-                  type="text" 
-                  name="nama"
-                  required
-                  placeholder="Cth: Sarah (Fikom)" 
-                  class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d]">
-              </div>
-
-              <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-[#4a3e4d] ml-2">No. WhatsApp</label>
-                <input 
-                  type="tel" 
-                  name="no_wa"
-                  placeholder="0812-xxxx-xxxx" 
-                  class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d]">
-              </div>
-
-              <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-[#4a3e4d] ml-2">Pilih Kampus / Lokasi</label>
-                <select name="kampus" class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d] appearance-none cursor-pointer">
-                  <option value="Belum Ditentukan">Pilih Kampus di Tangsel...</option>
-                  <option value="UIN Syarif Hidayatullah">UIN Syarif Hidayatullah</option>
-                  <option value="Universitas Pamulang">Universitas Pamulang</option>
-                  <option value="Universitas Muhammadiyah Jakarta">Universitas Muhammadiyah Jakarta</option>
-                  <option value="PKN STAN Bintaro">PKN STAN Bintaro</option>
-                  <option value="Lokasi Lainnya">Lokasi Lainnya</option>
-                </select>
-              </div>
-
-              <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-[#4a3e4d] ml-2">Jenis Produk</label>
-                <select name="produk" class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d] appearance-none cursor-pointer">
-                  <option value="Papan Akrilik Sempro / Sidang">Papan Akrilik Sempro / Sidang</option>
-                  <option value="Papan Akrilik Wisuda">Papan Akrilik Wisuda</option>
-                  <option value="Buket Bunga">Buket Bunga</option>
-                  <option value="Buket Uang / Snack">Buket Uang / Snack</option>
-                </select>
-              </div>
-
-              <div class="flex flex-col gap-2 md:col-span-2">
-                <label class="text-sm font-semibold text-[#4a3e4d] ml-2">Catatan Khusus (Tulisan/Gelar/Warna)</label>
-                <textarea 
-                  name="catatan"
-                  rows="3"
-                  placeholder="Cth: Happy Graduation Budi Santoso, S.Kom. Nuansa warna pink." 
-                  class="w-full bg-[#f8f6f9] border border-transparent px-5 py-3.5 rounded-2xl focus:outline-none focus:border-[#b496c4] focus:ring-2 focus:ring-[#b496c4]/20 transition-all text-[#4a3e4d] resize-none"
-                ></textarea>
-              </div>
-            </div>
-
-            <button 
-              type="submit"
-              class="w-full mt-8 flex items-center justify-center gap-2 bg-[#b496c4] text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-[#b496c4]/30 hover:bg-[#9a7ca9] transition-all active:scale-[0.98] cursor-pointer"
-            >
-              <span>Kirim via WhatsApp</span>
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"></path></svg>
-            </button>
-          </form>
-        </section>
-
-        <footer class="px-6 md:px-12 py-10 text-center border-t border-[#f3e8f4]/50 bg-white/30">
-          <p class="font-serif text-3xl font-semibold text-[#b496c4] mb-2 tracking-wide">Bunga Cerita</p>
-          <p class="text-base text-[#4a3e4d] font-medium mb-4 italic">"Karena Setiap Momen Layak Diceritakan."</p>
-          <p class="text-sm text-[#8a7d8d] mb-6 max-w-sm mx-auto leading-relaxed">
-            Membawa senyum di setiap perayaan akademik sahabat. <br>Tangerang Selatan, Indonesia.
-          </p>
-          
-          <!-- Detail Operasional & Pembayaran -->
-          <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-sm text-[#4a3e4d] mb-8 bg-white/60 py-5 px-8 rounded-[24px] inline-flex shadow-sm border border-[#f3e8f4]">
-            <div class="flex flex-col items-center md:items-start text-center md:text-left">
-              <span class="font-bold mb-1 text-[#b496c4] flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                Jam Operasional
-              </span>
-              <span class="text-[#8a7d8d]">Buka Setiap Hari : 08.00 - 20.00 WIB</span>
-            </div>
-            <div class="hidden md:block w-px h-10 bg-[#d8cce0]"></div>
-            <div class="flex flex-col items-center md:items-start text-center md:text-left">
-              <span class="font-bold mb-1 text-[#b496c4] flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                Metode Pembayaran
-              </span>
-              <span class="text-[#8a7d8d]">QRIS & Transfer Bank</span>
-            </div>
-          </div>
-
-          <div class="flex justify-center gap-6 text-sm font-medium text-[#4a3e4d]">
-            <a href="#" class="hover:text-[#b496c4] transition-colors cursor-pointer flex items-center gap-2">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg>
-              Instagram
+            </footer>
+        </div>
+        
+        <!-- Tombol Sticky Mobile untuk Chat Admin -->
+        <div class="fixed bottom-4 left-4 right-24 z-40 md:hidden">
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer" class="flex justify-center items-center w-full bg-gradient-to-r from-[#b496c4] to-[#c7abc2] text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-[#b496c4]/40 active:scale-95 transition-transform">
+                Tanya Admin
             </a>
-            <a href="#" class="hover:text-[#b496c4] transition-colors cursor-pointer flex items-center gap-2">
-               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"></path></svg>
-              TikTok
-            </a>
-          </div>
-        </footer>
+        </div>
 
-      </div>
-      
-      <!-- Tombol Sticky Mobile untuk Chat Admin (Di-resize agar tidak nabrak icon WA di HP) -->
-      <div class="fixed bottom-4 left-4 right-24 z-40 md:hidden">
-        <a 
-          href="https://wa.me/6281234567890"
-          target="_blank"
-          rel="noreferrer"
-          class="flex justify-center items-center w-full bg-gradient-to-r from-[#b496c4] to-[#c7abc2] text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-[#b496c4]/40 active:scale-95 transition-transform"
-        >
-          Tanya Admin
+        <!-- Floating WhatsApp Button -->
+        <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer" class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_10px_20px_rgba(37,211,102,0.3)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-pointer" style="animation: pulse-wa 2s infinite">
+            <svg class="w-8 h-8 md:w-9 md:h-9" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825 0 6.938 3.112 6.938 6.937 0 3.825-3.113 6.938-6.938 6.938z"/>
+            </svg>
         </a>
-      </div>
-
-      <!-- Floating WhatsApp Button -->
-      <a 
-        href="https://wa.me/6281234567890" 
-        target="_blank" 
-        rel="noreferrer" 
-        class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_10px_20px_rgba(37,211,102,0.3)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-        style="animation: pulse-wa 2s infinite"
-      >
-        <svg class="w-8 h-8 md:w-9 md:h-9" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825 0 6.938 3.112 6.938 6.937 0 3.825-3.113 6.938-6.938 6.938z"></path>
-        </svg>
-      </a>
-
     </div>
+
+    <!-- Script Logika Interaktif -->
+    <script>
+        // Logika Toggle Menu Mobile
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Tutup menu mobile ketika link di klik
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Logika Render Portofolio (Untuk menghindari penulisan ulang HTML yang terlalu panjang)
+        const portfolioImagesRow1 = [
+            'https://images.unsplash.com/photo-1523580494112-071dcb92a71d?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1525926476899-7a2e58c8a143?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1627556592933-ffe99c1c9cd0?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1541250848049-b4f71426cad6?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1563241597-12a414531d5e?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1579227114347-15d08fc37cae?auto=format&fit=crop&q=80&w=400&h=400'
+        ];
+
+        const portfolioImagesRow2 = [
+            'https://images.unsplash.com/photo-1589123053646-4e96387010bb?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1558231221-a5f9736e4efb?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1502977249166-824b3a8a4d6d?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1497215848897-400d724948a8?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&q=80&w=400&h=400',
+            'https://images.unsplash.com/photo-1471017997380-0a2b53589b25?auto=format&fit=crop&q=80&w=400&h=400'
+        ];
+
+        function renderPortfolio(containerId, imagesArray) {
+            const container = document.getElementById(containerId);
+            // Diduplikasi seperti kode aslinya (array diconcat) untuk efek animasi infinity
+            const duplicatedImages = [...imagesArray, ...imagesArray];
+            
+            duplicatedImages.forEach((img, idx) => {
+                const card = document.createElement('div');
+                card.className = "w-[180px] h-[220px] md:w-[220px] md:h-[260px] flex-shrink-0 relative overflow-hidden rounded-[24px] shadow-sm group";
+                
+                card.innerHTML = `
+                    <img src="${img}" alt="Portofolio ${idx}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#b496c4]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        renderPortfolio('portfolio-row-1', portfolioImagesRow1);
+        renderPortfolio('portfolio-row-2', portfolioImagesRow2);
+
+        // Logika Submit Form WhatsApp
+        const orderForm = document.getElementById('order-form');
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const formData = new FormData(e.target);
+            const nama = formData.get('nama');
+            const no_wa = formData.get('no_wa');
+            const kampus = formData.get('kampus');
+            const produk = formData.get('produk');
+            const catatan = formData.get('catatan');
+
+            if(!nama) return;
+
+            const adminWA = "6281234567890"; // Nomor WA Admin
+            
+            const message = `Halo Admin Bunga Cerita! 👋\nSaya ingin memesan kado:\n\n*Nama:* ${nama}\n*No. WA:* ${no_wa || '-'}\n*Kampus / Lokasi:* ${kampus}\n*Jenis Produk:* ${produk}\n*Catatan Khusus:* ${catatan || '-'}\n\nMohon info total harga dan prosedur pembayarannya ya. Terima kasih! ✨`;
+
+            window.open(`https://wa.me/${adminWA}?text=${encodeURIComponent(message)}`, '_blank');
+        });
+    </script>
+</body>
+</html>
