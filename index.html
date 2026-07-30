@@ -74,6 +74,16 @@
             animation: float 4s ease-in-out infinite;
         }
 
+        /* Interactive 3D Transform Wrapper */
+        .interactive-wrapper {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .interactive-image {
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
         @keyframes pulse-wa {
             0% { box-shadow: 0 0 0 0 rgba(37,211,102, 0.5); }
             70% { box-shadow: 0 0 0 15px rgba(37,211,102, 0); }
@@ -197,9 +207,9 @@
                     </div>
                 </div>
 
-                <!-- Gambar Hero -->
-                <div class="w-full lg:w-1/2 flex justify-center relative animate-fade-in-up" style="animation-delay: 0.4s">
-                    <div class="absolute top-10 -left-6 lg:-left-10 bg-white p-4 rounded-2xl shadow-xl shadow-black/5 animate-float flex items-center gap-3 z-10 hidden md:flex">
+                <!-- Gambar Hero (Dengan Efek Interactive 3D Tilt) -->
+                <div class="w-full lg:w-1/2 flex justify-center relative animate-fade-in-up interactive-wrapper" style="animation-delay: 0.4s">
+                    <div class="absolute top-10 -left-6 lg:-left-10 bg-white p-4 rounded-2xl shadow-xl shadow-black/5 animate-float flex items-center gap-3 z-10 hidden md:flex" style="transform: translateZ(50px);">
                         <div class="w-10 h-10 rounded-full bg-[#f3e8f4] flex items-center justify-center text-xl">✨</div>
                         <div>
                             <p class="text-xs text-[#8a7d8d]">Untuk Semua Acara</p>
@@ -207,13 +217,13 @@
                         </div>
                     </div>
                     
-                    <div class="relative w-full max-w-[280px] md:max-w-[350px] lg:max-w-[400px] aspect-[4/5] rounded-[200px] rounded-bl-[40px] rounded-br-[40px] overflow-hidden shadow-2xl border-4 border-white/60">
+                    <div id="hero-image-container" class="interactive-image relative w-full max-w-[280px] md:max-w-[350px] lg:max-w-[400px] aspect-[4/5] rounded-[200px] rounded-bl-[40px] rounded-br-[40px] overflow-hidden shadow-2xl border-4 border-white/60 cursor-pointer">
                         <!-- GAMBAR HERO -->
                         <img src="ISI_GAMBAR_HERO_DI_SINI" alt="Papan Ucapan Akrilik Tangsel Ciputat" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#b496c4]/40 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#b496c4]/40 to-transparent pointer-events-none"></div>
                     </div>
                     
-                    <div class="absolute bottom-10 -right-2 lg:-right-5 bg-[#f3e8f4] p-4 rounded-full shadow-lg border-2 border-white animate-float z-10" style="animation-delay: 1s">
+                    <div class="absolute bottom-10 -right-2 lg:-right-5 bg-[#f3e8f4] p-4 rounded-full shadow-lg border-2 border-white animate-float z-10" style="animation-delay: 1s; transform: translateZ(30px);">
                         <div class="w-16 h-16 rounded-full border-2 border-[#b496c4] border-dashed flex items-center justify-center bg-white/50 backdrop-blur text-center">
                             <div>
                                 <p class="text-[10px] text-[#8a7d8d] font-bold leading-none">FREE</p>
@@ -610,10 +620,40 @@
         });
 
         // ==========================================
+        // 3D TILT EFFECT UNTUK HERO IMAGE
+        // ==========================================
+        const heroContainer = document.getElementById('hero-image-container');
+        
+        if(heroContainer) {
+            heroContainer.addEventListener('mousemove', (e) => {
+                const rect = heroContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -12; // Max tilt 12 degree
+                const rotateY = ((x - centerX) / centerX) * 12;
+
+                heroContainer.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            heroContainer.addEventListener('mouseleave', () => {
+                heroContainer.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                heroContainer.style.transition = 'transform 0.5s ease-in-out';
+            });
+
+            heroContainer.addEventListener('mouseenter', () => {
+                heroContainer.style.transition = 'transform 0.1s ease-out';
+            });
+        }
+
+        // ==========================================
         // RENDER KATALOG DENGAN DRAG & AUTO-SCROLL
         // ==========================================
         const products = [
-            { id: 1, name: 'Sempro Mini Akrilik', price: 'Rp 120.000', category: 'Sempro / Proposal', img: 'assets/logo1.png' },
+            { id: 1, name: 'Sempro Mini Akrilik', price: 'Rp 120.000', category: 'Sempro / Proposal', img: 'ISI_GAMBAR_PRODUK_1_DI_SINI' },
             { id: 2, name: 'Buket Bunga Premium', price: 'Rp 150.000', category: 'Buket Bunga', img: 'ISI_GAMBAR_PRODUK_2_DI_SINI' },
             { id: 3, name: 'Sidang Classic Akrilik', price: 'Rp 175.000', category: 'Sidang Skripsi', img: 'ISI_GAMBAR_PRODUK_3_DI_SINI' },
             { id: 4, name: 'Buket Uang Aesthetic', price: 'Rp 300.000', category: 'Buket Uang', img: 'ISI_GAMBAR_PRODUK_4_DI_SINI' },
