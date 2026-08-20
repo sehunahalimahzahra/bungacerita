@@ -133,7 +133,6 @@
                     <span class="font-serif text-2xl font-semibold tracking-wide text-[#5A4A5E]">Bunga Cerita</span>
                 </div>
 
-                <!-- Menambahkan kembali navigasi dan tombol mobile yang sebelumnya hilang -->
                 <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-[#958499]">
                     <a href="#beranda" class="hover:text-[#A875D0] transition-colors">Beranda</a>
                     <a href="#katalog" class="hover:text-[#A875D0] transition-colors">Katalog</a>
@@ -193,7 +192,7 @@
                     </div>
                 </div>
 
-                <!-- Gambar Hero (Rekomendasi Estetik & Tanpa Interaksi 3D) -->
+                <!-- Gambar Hero -->
                 <div class="w-full lg:w-1/2 flex justify-center relative animate-fade-in-up" style="animation-delay: 0.4s">
                     <div class="absolute top-10 -left-6 lg:-left-10 bg-white p-4 rounded-2xl shadow-xl shadow-purple-900/5 animate-float flex items-center gap-3 z-10 hidden md:flex">
                         <div class="w-10 h-10 rounded-full bg-[#F4E8FF] flex items-center justify-center text-xl">✨</div>
@@ -204,7 +203,6 @@
                     </div>
                     
                     <div id="hero-image-container" class="relative w-full max-w-[280px] md:max-w-[350px] lg:max-w-[400px] aspect-[4/5] rounded-[200px] rounded-bl-[40px] rounded-br-[40px] overflow-hidden shadow-2xl shadow-[#C8A2E8]/20 border-4 border-white/80 bg-white">
-                        <!-- GAMBAR HERO REKOMENDASI (BUNGA UNGU) -->
                         <img src="https://images.pexels.com/photos/5980/food-vintage-flowers-bouquet.jpg?auto=compress&cs=tinysrgb&w=400&h=500&dpr=2" 
                              onerror="this.src='https://placehold.co/400x500/EAD4FB/5A4A5E?text=Buket+Ungu'"
                              alt="Papan Ucapan Akrilik & Buket Bunga Ungu" 
@@ -283,7 +281,6 @@
                     
                     <div class="w-full lg:w-1/2 h-64 md:h-80 bg-white rounded-3xl shadow-inner relative overflow-hidden flex items-center justify-center border border-[#F0E1F9]">
                         <div class="absolute inset-0 bg-gradient-to-tr from-[#EAD4FB]/40 to-transparent"></div>
-                        <!-- GAMBAR PENGIRIMAN REKOMENDASI -->
                         <img src="https://images.pexels.com/photos/931166/pexels-photo-931166.jpeg?auto=compress&cs=tinysrgb&w=800" 
                              onerror="this.src='https://placehold.co/600x400/FDF8FF/A875D0?text=Pengiriman+Aman'"
                              alt="Pengiriman Bunga Tangsel" 
@@ -634,8 +631,27 @@
         });
 
         // RENDER GAMBAR PORTOFOLIO
-        const portfolioImagesRow1 = Array(8).fill('https://placehold.co/300x400/EAD4FB/5A4A5E?text=Porto');
-        const portfolioImagesRow2 = Array(8).fill('https://placehold.co/300x400/C8A2E8/ffffff?text=Porto');
+        const portfolioImagesRow1 = [
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 1 Baris 1
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 2 Baris 1
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 3 Baris 1
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 4 Baris 1
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 5 Baris 1
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 6 Baris 1
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 7 Baris 1
+            'ISI GAMBAR PORTOFOLIO DISINI'  // Gambar 8 Baris 1
+        ];
+
+        const portfolioImagesRow2 = [
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 1 Baris 2
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 2 Baris 2
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 3 Baris 2
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 4 Baris 2
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 5 Baris 2
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 6 Baris 2
+            'ISI GAMBAR PORTOFOLIO DISINI', // Gambar 7 Baris 2
+            'ISI GAMBAR PORTOFOLIO DISINI'  // Gambar 8 Baris 2
+        ];
 
         function renderPortfolio(containerId, imagesArray) {
             const container = document.getElementById(containerId);
@@ -646,7 +662,7 @@
                 card.className = "w-[180px] h-[220px] md:w-[220px] md:h-[260px] flex-shrink-0 relative overflow-hidden rounded-[24px] shadow-sm group border border-[#F0E1F9]/50";
                 
                 card.innerHTML = `
-                    <img src="" alt="Papan Ucapan Akrilik ${idx}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                    <img src="${img}" alt="Papan Ucapan Akrilik ${idx}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
                     <div class="absolute inset-0 bg-gradient-to-t from-[#A875D0]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 `;
                 container.appendChild(card);
@@ -794,4 +810,3 @@
     </script>
 </body>
 </html>
-
