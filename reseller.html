@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Program Kemitraan Reseller Marketing</title>
+    
+    <!-- Favicon (Ikon di tab browser) -->
+    <link rel="icon" href="assets/logo1.png" type="image/png">
+    <link rel="shortcut icon" href="assets/logo1.png" type="image/png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
@@ -11,14 +16,14 @@
     <style>
         :root {
             /* Tema Ungu Pastel & Pink Soft */
-            --bg-base: #F9F6FC;         /* Light purple/grey tint untuk background */
-            --text-dark: #4A405A;       /* Deep muted purple untuk teks utama */
-            --text-muted: #8B839B;      /* Soft purple-grey untuk teks sekunder */
-            --accent-light: #E8DEFA;    /* Very light purple untuk border/highlight */
-            --accent-main: #B59FDC;     /* Primary Pastel Purple */
-            --accent-dark: #8F76BE;     /* Darker purple untuk hover state */
-            --accent-pink: #F3C8D9;     /* Soft pastel pink untuk kombinasi gradien */
-            --card-bg: rgba(255, 255, 255, 0.65); /* Glassmorphism background */
+            --bg-base: #F9F6FC;         
+            --text-dark: #4A405A;       
+            --text-muted: #8B839B;      
+            --accent-light: #E8DEFA;    
+            --accent-main: #B59FDC;     
+            --accent-dark: #8F76BE;     
+            --accent-pink: #F3C8D9;     
+            --card-bg: rgba(255, 255, 255, 0.65); 
         }
 
         body {
@@ -26,7 +31,6 @@
             color: var(--text-dark);
             min-height: 100vh;
             background-color: var(--bg-base);
-            /* Pola titik-titik samar dengan warna ungu terang */
             background-image: radial-gradient(var(--accent-light) 1px, transparent 1px), radial-gradient(var(--accent-light) 1px, var(--bg-base) 1px);
             background-size: 40px 40px;
             background-position: 0 0, 20px 20px;
@@ -39,7 +43,6 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Glassmorphism Card Style */
         .elegant-card {
             background: var(--card-bg);
             backdrop-filter: blur(16px);
@@ -56,7 +59,6 @@
             box-shadow: 0 15px 50px -10px rgba(181, 159, 220, 0.35);
         }
 
-        /* Efek Gradien Teks */
         .text-purple-gradient {
             background: linear-gradient(135deg, var(--accent-main) 0%, var(--accent-dark) 100%);
             -webkit-background-clip: text;
@@ -64,7 +66,6 @@
             background-clip: text;
         }
 
-        /* Bentuk Blobs Animasi di Background */
         .organic-shape {
             position: absolute;
             background: linear-gradient(135deg, rgba(181, 159, 220, 0.4) 0%, rgba(243, 200, 217, 0.4) 100%);
@@ -98,22 +99,20 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Container Grafik Responsif */
         .chart-container {
             position: relative;
             width: 100%;
-            height: 250px; /* Lebih kecil di mobile */
+            height: 250px; 
         }
         @media (min-width: 768px) {
             .chart-container { height: 320px; }
         }
 
-        /* Styling Input Formulir */
         .elegant-input {
             background: rgba(255, 255, 255, 0.6);
             border: 2px solid var(--accent-light);
             color: var(--text-dark);
-            font-size: 16px; /* Mencegah auto-zoom di iOS */
+            font-size: 16px; 
         }
         .elegant-input:focus {
             border-color: var(--accent-main);
@@ -122,7 +121,6 @@
             outline: none;
         }
 
-        /* Floating WhatsApp Button */
         .floating-wa {
             position: fixed;
             bottom: 24px;
@@ -150,7 +148,6 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* FAQ Accordion */
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -164,7 +161,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Tier Cards specific */
         .tier-card {
             position: relative;
             overflow: hidden;
@@ -188,10 +184,12 @@
     <div class="organic-shape shape-3"></div>
 
     <nav class="elegant-card sticky top-4 z-50 mx-4 md:mx-auto max-w-7xl px-5 md:px-6 py-3 md:py-4 rounded-full mt-4 flex justify-center md:justify-between items-center">
-        <!-- Judul yang sudah diubah menjadi link -->
-        <a href="https://bungacerita-one.vercel.app/" class="text-2xl md:text-3xl font-bold font-heading text-purple-gradient italic tracking-wide hover:opacity-80 transition-opacity cursor-pointer">Bunga Cerita</a>
+        <!-- Menambahkan Logo di Navbar -->
+        <a href="https://bungacerita-one.vercel.app/" class="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
+            <img src="assets/logo1.png" alt="Logo Bunga Cerita" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-[var(--accent-light)] object-cover shadow-sm bg-white">
+            <span class="text-2xl md:text-3xl font-bold font-heading text-purple-gradient italic tracking-wide">Bunga Cerita</span>
+        </a>
         
-        <!-- Menu disembunyikan di mobile agar rapi, muncul di iPad/Desktop -->
         <div class="hidden md:flex space-x-8 items-center">
             <a href="#tugas" class="text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--accent-dark)] transition-colors tracking-wide">Peran Mitra</a>
             <a href="#kalkulator" class="text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--accent-dark)] transition-colors tracking-wide">Simulasi</a>
@@ -215,7 +213,7 @@
             </p>
 
             <div class="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
-                <a href="https://wa.me/6281234567890?text=Halo%20Bunga%20Cerita,%20saya%20tertarik%20bergabung%20sebagai%20mitra%20reseller" target="_blank" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[var(--accent-main)] to-[var(--accent-dark)] text-white font-semibold shadow-lg shadow-[var(--accent-main)]/30 hover:shadow-xl hover:shadow-[var(--accent-main)]/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
+                <a href="https://forms.gle/nu416Hj3274emfHcA" target="_blank" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[var(--accent-main)] to-[var(--accent-dark)] text-white font-semibold shadow-lg shadow-[var(--accent-main)]/30 hover:shadow-xl hover:shadow-[var(--accent-main)]/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
                     <span>Daftar Jadi Mitra</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
@@ -233,23 +231,17 @@
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
                     <div class="text-center group">
-                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white border border-[var(--accent-light)] rounded-full flex items-center justify-center text-xl md:text-2xl mb-4 group-hover:bg-[var(--accent-main)] group-hover:text-white transition-all duration-400 shadow-sm">
-                            💜
-                        </div>
+                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white border border-[var(--accent-light)] rounded-full flex items-center justify-center text-xl md:text-2xl mb-4 group-hover:bg-[var(--accent-main)] group-hover:text-white transition-all duration-400 shadow-sm">💜</div>
                         <h3 class="font-bold text-lg mb-2 font-heading text-[var(--text-dark)]">Temukan Cerita</h3>
                         <p class="text-sm text-[var(--text-muted)] leading-relaxed px-2">Identifikasi prospek yang membutuhkan sentuhan produk dan layanan kami.</p>
                     </div>
                     <div class="text-center group">
-                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white border border-[var(--accent-light)] rounded-full flex items-center justify-center text-xl md:text-2xl mb-4 group-hover:bg-[var(--accent-main)] group-hover:text-white transition-all duration-400 shadow-sm">
-                            ✨
-                        </div>
+                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white border border-[var(--accent-light)] rounded-full flex items-center justify-center text-xl md:text-2xl mb-4 group-hover:bg-[var(--accent-main)] group-hover:text-white transition-all duration-400 shadow-sm">✨</div>
                         <h3 class="font-bold text-lg mb-2 font-heading text-[var(--text-dark)]">Bagikan Keindahan</h3>
                         <p class="text-sm text-[var(--text-muted)] leading-relaxed px-2">Promosikan produk dengan cara yang autentik melalui media sosial atau relasi.</p>
                     </div>
                     <div class="text-center group">
-                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white border border-[var(--accent-light)] rounded-full flex items-center justify-center text-xl md:text-2xl mb-4 group-hover:bg-[var(--accent-main)] group-hover:text-white transition-all duration-400 shadow-sm">
-                            🤝
-                        </div>
+                        <div class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white border border-[var(--accent-light)] rounded-full flex items-center justify-center text-xl md:text-2xl mb-4 group-hover:bg-[var(--accent-main)] group-hover:text-white transition-all duration-400 shadow-sm">🤝</div>
                         <h3 class="font-bold text-lg mb-2 font-heading text-[var(--text-dark)]">Hubungkan</h3>
                         <p class="text-sm text-[var(--text-muted)] leading-relaxed px-2">Arahkan calon pelanggan kepada tim kami untuk merampungkan pesanan.</p>
                     </div>
@@ -261,16 +253,20 @@
             <div class="elegant-card p-6 md:p-12">
                 <div class="text-center mb-8 md:mb-12">
                     <h2 class="text-2xl md:text-3xl font-bold mb-3 font-heading text-[var(--text-dark)]">Simulasi Apresiasi</h2>
-                    <p class="text-sm md:text-base text-[var(--text-muted)] px-4">Hitung potensi apresiasi yang akan Anda terima dari setiap pelanggan.</p>
+                    <p class="text-sm md:text-base text-[var(--text-muted)] px-4">Hitung potensi apresiasi yang akan Anda terima dari setiap pelanggan berdasarkan tier Anda.</p>
                 </div>
                 
                 <div class="grid lg:grid-cols-2 gap-10 md:gap-14 items-center">
                     <div class="space-y-5 md:space-y-6">
                         <div>
-                            <label class="block text-sm font-bold text-[var(--text-dark)] mb-2 tracking-wide">Bentuk Kemitraan</label>
+                            <label class="block text-sm font-bold text-[var(--text-dark)] mb-2 tracking-wide">Bentuk Kemitraan & Level</label>
                             <select id="calcType" class="elegant-input w-full p-3 md:p-4 rounded-xl transition-all cursor-pointer" onchange="calculate()">
-                                <option value="10">Penyewaan Dekorasi/Produk (10%)</option>
-                                <option value="5">Pembelian Produk (5%)</option>
+                                <option value="10">Tier Silver - Sewa (10%)</option>
+                                <option value="5">Tier Silver - Beli (5%)</option>
+                                <option value="12">Tier Gold - Sewa (12%)</option>
+                                <option value="7">Tier Gold - Beli (7%)</option>
+                                <option value="15">Tier Platinum - Sewa (15%)</option>
+                                <option value="10">Tier Platinum - Beli (10%)</option>
                             </select>
                         </div>
                         <div>
@@ -278,7 +274,6 @@
                             <input type="number" id="calcValue" value="1500000" step="100000" class="elegant-input w-full p-3 md:p-4 rounded-xl transition-all" oninput="calculate()">
                         </div>
                         <div class="p-6 md:p-8 rounded-2xl bg-white border border-[var(--accent-light)] text-center shadow-sm relative overflow-hidden mt-4">
-                            <!-- Efek glow di dalam box hasil -->
                             <div class="absolute top-0 right-0 w-32 h-32 bg-[var(--accent-main)] opacity-10 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2"></div>
                             <div class="absolute bottom-0 left-0 w-24 h-24 bg-[var(--accent-pink)] opacity-10 rounded-full blur-2xl transform -translate-x-1/2 translate-y-1/2"></div>
                             
@@ -298,7 +293,6 @@
             <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center font-heading text-[var(--text-dark)]">Perjalanan Kemitraan</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-                <!-- Steps Array -->
                 <div class="elegant-card p-6 md:p-8 flex flex-col relative overflow-hidden group">
                     <div class="absolute -right-4 -top-4 text-7xl font-playfair opacity-[0.04] text-[var(--accent-dark)] font-bold group-hover:scale-110 transition-transform duration-500">1</div>
                     <h4 class="font-bold text-lg md:text-xl mb-2 md:mb-3 text-[var(--accent-dark)] font-heading">Mendaftar</h4>
@@ -327,15 +321,13 @@
                 <div class="elegant-card p-6 md:p-8 flex flex-col relative overflow-hidden group">
                     <div class="absolute -right-4 -top-4 text-7xl font-playfair opacity-[0.04] text-[var(--accent-dark)] font-bold group-hover:scale-110 transition-transform duration-500">6</div>
                     <h4 class="font-bold text-lg md:text-xl mb-2 md:mb-3 text-[var(--accent-dark)] font-heading">Pencairan</h4>
-                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">Apresiasi ditransfer rutin setiap awal bulan (tanggal 1-5) dengan tepat waktu.</p>
+                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">Apresiasi ditransfer serentak setiap tanggal 5 setiap bulannya dengan tepat waktu.</p>
                 </div>
             </div>
         </section>
 
         <section id="benefit" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16 fade-in" style="animation-delay: 0.4s;">
-            <!-- Benefits -->
             <div class="elegant-card p-8 md:p-10 bg-gradient-to-br from-[var(--accent-main)] to-[var(--accent-dark)] text-white border-none shadow-xl relative overflow-hidden">
-                <!-- Motif Kaca Overlay -->
                 <div class="absolute inset-0 bg-white opacity-10" style="background-image: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.4) 55%, transparent 60%); background-size: 300% 300%; animation: shine 8s infinite linear;"></div>
                 
                 <h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 font-heading relative z-10">Keistimewaan Mitra</h3>
@@ -359,22 +351,21 @@
                 </ul>
             </div>
             
-            <!-- Rules -->
             <div class="elegant-card p-6 md:p-10">
                 <h3 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 font-heading text-[var(--text-dark)]">Panduan Harmoni</h3>
                 <div class="space-y-3 md:space-y-4">
                     <div class="flex items-start p-3 md:p-4 rounded-xl hover:bg-white/80 transition-colors border border-transparent hover:border-[var(--accent-light)]">
                         <span class="mr-4 text-xl md:text-2xl">💎</span>
                         <div>
-                            <h5 class="font-bold text-[var(--text-dark)] text-sm md:text-base">Minimal Pencairan</h5>
-                            <p class="text-xs md:text-sm text-[var(--text-muted)] mt-1">Diakumulasikan hingga minimal Rp100.000 untuk ditransfer.</p>
+                            <h5 class="font-bold text-[var(--text-dark)] text-sm md:text-base">Tidak Ada Minimal Pencairan</h5>
+                            <p class="text-xs md:text-sm text-[var(--text-muted)] mt-1">Berapa pun saldo komisi Anda, akan langsung kami cairkan seluruhnya.</p>
                         </div>
                     </div>
                     <div class="flex items-start p-3 md:p-4 rounded-xl hover:bg-white/80 transition-colors border border-transparent hover:border-[var(--accent-light)]">
                         <span class="mr-4 text-xl md:text-2xl">📅</span>
                         <div>
                             <h5 class="font-bold text-[var(--text-dark)] text-sm md:text-base">Jadwal Pencairan</h5>
-                            <p class="text-xs md:text-sm text-[var(--text-muted)] mt-1">Apresiasi dibagikan setiap tanggal 1 hingga 5 setiap bulannya.</p>
+                            <p class="text-xs md:text-sm text-[var(--text-muted)] mt-1">Apresiasi dibagikan serentak tepat pada tanggal 5 setiap bulannya.</p>
                         </div>
                     </div>
                     <div class="flex items-start p-3 md:p-4 rounded-xl hover:bg-white/80 transition-colors border border-transparent hover:border-[var(--accent-light)]">
@@ -400,7 +391,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                <!-- Silver -->
                 <div class="elegant-card tier-card tier-silver p-6 md:p-8 flex flex-col items-center text-center">
                     <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-4 shadow-inner border border-slate-200">
                         <span class="text-2xl">🥈</span>
@@ -420,7 +410,6 @@
                     </div>
                 </div>
 
-                <!-- Gold -->
                 <div class="elegant-card tier-card tier-gold p-6 md:p-8 flex flex-col items-center text-center transform md:-translate-y-4 border-[var(--accent-main)] shadow-lg shadow-[var(--accent-main)]/20">
                     <div class="absolute top-0 right-0 px-3 py-1 bg-[var(--accent-main)] text-white text-xs font-bold rounded-bl-lg rounded-tr-xl">POPULER</div>
                     <div class="w-16 h-16 rounded-full bg-yellow-50 flex items-center justify-center mb-4 shadow-inner border border-yellow-200">
@@ -441,7 +430,6 @@
                     </div>
                 </div>
 
-                <!-- Platinum -->
                 <div class="elegant-card tier-card tier-platinum p-6 md:p-8 flex flex-col items-center text-center">
                     <div class="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center mb-4 shadow-inner border border-purple-200">
                         <span class="text-2xl">💎</span>
@@ -469,7 +457,6 @@
             </div>
             
             <div class="max-w-3xl mx-auto space-y-4">
-                <!-- FAQ 1 -->
                 <div class="faq-item elegant-card bg-white/60 hover:bg-white/80 transition-colors rounded-2xl overflow-hidden cursor-pointer border border-[var(--accent-light)]" onclick="toggleFaq(this)">
                     <div class="p-5 md:p-6 flex justify-between items-center">
                         <h4 class="font-bold text-[var(--text-dark)] text-sm md:text-base">Apakah ada biaya untuk bergabung?</h4>
@@ -482,20 +469,18 @@
                     </div>
                 </div>
                 
-                <!-- FAQ 2 -->
                 <div class="faq-item elegant-card bg-white/60 hover:bg-white/80 transition-colors rounded-2xl overflow-hidden cursor-pointer border border-[var(--accent-light)]" onclick="toggleFaq(this)">
                     <div class="p-5 md:p-6 flex justify-between items-center">
-                        <h4 class="font-bold text-[var(--text-dark)] text-sm md:text-base">Bagaimana jika komisi saya kurang dari Rp100.000?</h4>
+                        <h4 class="font-bold text-[var(--text-dark)] text-sm md:text-base">Apakah ada batas minimal pencairan komisi?</h4>
                         <div class="faq-icon text-[var(--accent-main)] text-xl font-bold">+</div>
                     </div>
                     <div class="faq-answer px-5 md:px-6">
                         <p class="text-sm text-[var(--text-muted)] border-t border-[var(--accent-light)] pt-4 pb-2 leading-relaxed">
-                            Tidak perlu khawatir. Saldo komisi Anda tidak akan hilang. Nominal tersebut akan disimpan dan diakumulasikan secara otomatis ke pendapatan Anda di bulan berikutnya hingga mencapai batas minimal pencairan.
+                            Sama sekali tidak! Tidak ada batas minimal pencairan. Berapa pun nominal komisi yang Anda peroleh, akan kami transfer seluruhnya ke rekening Anda setiap jadwal pencairan.
                         </p>
                     </div>
                 </div>
 
-                <!-- FAQ 3 -->
                 <div class="faq-item elegant-card bg-white/60 hover:bg-white/80 transition-colors rounded-2xl overflow-hidden cursor-pointer border border-[var(--accent-light)]" onclick="toggleFaq(this)">
                     <div class="p-5 md:p-6 flex justify-between items-center">
                         <h4 class="font-bold text-[var(--text-dark)] text-sm md:text-base">Apakah saya perlu mengurus pengiriman barang?</h4>
@@ -529,27 +514,29 @@
             const ctx = document.getElementById('commissionChart').getContext('2d');
             
             Chart.defaults.font.family = "'Lora', serif";
-            Chart.defaults.color = '#8B839B'; // text-muted
-            Chart.defaults.font.size = window.innerWidth < 768 ? 10 : 12; // Ukuran font responsif
+            Chart.defaults.color = '#8B839B'; 
+            Chart.defaults.font.size = window.innerWidth < 768 ? 10 : 12;
 
             myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Sewa (10%)', 'Beli (5%)'],
+                    labels: ['Silver (10%)', 'Gold (12%)', 'Platinum (15%)'],
                     datasets: [{
                         label: 'Potensi Apresiasi',
-                        data: [100000, 50000],
+                        data: [0, 0, 0],
                         backgroundColor: [
-                            'rgba(181, 159, 220, 0.85)', /* accent-main rgba */
-                            'rgba(243, 200, 217, 0.85)'  /* accent-pink rgba */
+                            'rgba(226, 232, 240, 0.85)', 
+                            'rgba(254, 240, 138, 0.85)', 
+                            'rgba(181, 159, 220, 0.85)'  
                         ],
                         borderColor: [
-                            '#8F76BE', /* accent-dark */
-                            '#F3C8D9'
+                            '#94A3B8',
+                            '#EAB308',
+                            '#8F76BE'
                         ],
                         borderWidth: 1,
                         borderRadius: 8,
-                        barThickness: window.innerWidth < 768 ? 40 : 60 // Bar lebih tipis di mobile
+                        barThickness: window.innerWidth < 768 ? 40 : 60 
                     }]
                 },
                 options: {
@@ -578,7 +565,7 @@
                         y: {
                             beginAtZero: true,
                             grid: {
-                                color: 'rgba(232, 222, 250, 0.5)', /* accent-light semitransparent */
+                                color: 'rgba(232, 222, 250, 0.5)',
                                 drawBorder: false
                             },
                             ticks: {
@@ -605,11 +592,14 @@
         }
 
         function calculate() {
-            const rate = parseFloat(document.getElementById('calcType').value);
+            const selectEl = document.getElementById('calcType');
+            const rate = parseFloat(selectEl.value);
+            const textLabel = selectEl.options[selectEl.selectedIndex].text;
+            const isSewa = textLabel.toLowerCase().includes('sewa');
+
             const value = parseFloat(document.getElementById('calcValue').value) || 0;
             const result = (rate / 100) * value;
             
-            // Animate value change
             const resultEl = document.getElementById('calcResult');
             resultEl.style.opacity = 0;
             setTimeout(() => {
@@ -618,14 +608,18 @@
                 resultEl.style.transition = 'opacity 0.4s ease';
             }, 200);
             
-            // Update Chart
             if (myChart) {
-                myChart.data.datasets[0].data = [value * 0.1, value * 0.05];
+                if (isSewa) {
+                    myChart.data.labels = ['Silver (10%)', 'Gold (12%)', 'Platinum (15%)'];
+                    myChart.data.datasets[0].data = [value * 0.10, value * 0.12, value * 0.15];
+                } else {
+                    myChart.data.labels = ['Silver (5%)', 'Gold (7%)', 'Platinum (10%)'];
+                    myChart.data.datasets[0].data = [value * 0.05, value * 0.07, value * 0.10];
+                }
                 myChart.update();
             }
         }
 
-        // Handle resize window untuk menyesuaikan chart (Mobile friendly)
         window.addEventListener('resize', () => {
             if(myChart) {
                 myChart.options.scales.x.ticks.font.size = window.innerWidth < 768 ? 10 : 12;
@@ -634,9 +628,7 @@
             }
         });
 
-        // Fungsi untuk interaksi buka/tutup FAQ
         function toggleFaq(element) {
-            // Tutup semua FAQ lain yang sedang terbuka
             const allFaqs = document.querySelectorAll('.faq-item');
             allFaqs.forEach(faq => {
                 if (faq !== element && faq.classList.contains('active')) {
@@ -646,7 +638,6 @@
                 }
             });
 
-            // Toggle FAQ yang diklik
             element.classList.toggle('active');
             const icon = element.querySelector('.faq-icon');
             if (element.classList.contains('active')) {
