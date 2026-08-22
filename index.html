@@ -121,11 +121,10 @@
 </head>
 <body class="selection-custom">
 
-    <!-- Header Sticky ala Reseller Page -->
+    <!-- Header Sticky -->
     <header class='fixed top-0 left-0 right-0 w-full bg-white/90 backdrop-blur-md border-b border-[#F0E1F9] shadow-sm z-[100] transition-all duration-300'>
         <div class='max-w-6xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between'>
             <div class='flex items-center gap-3 cursor-pointer'>
-                <!-- LOGO -->
                 <img src='assets/logo1.png' alt='logo' class='w-10 h-10 rounded-full object-cover shadow-sm border border-[#F0E1F9]' />
                 <span class='text-2xl font-bold font-serif text-[#A875D0] italic tracking-wide'>Bunga Cerita</span>
             </div>
@@ -142,7 +141,6 @@
                 Pesan Sekarang
             </a>
 
-            <!-- Mobile Menu Button -->
             <button id='mobile-menu-btn' class='lg:hidden p-2 text-[#A875D0] cursor-pointer hover:bg-[#FAF5FF] rounded-lg transition-colors' aria-label='Toggle Mobile Menu'>
                 <svg id='icon-open' class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                     <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16m-7 6h7' />
@@ -164,7 +162,7 @@
         <a href='#pesan' class='mobile-link mt-4 bg-gradient-to-r from-[#A875D0] to-[#C8A2E8] text-white text-center py-3 rounded-xl font-bold shadow-md hover:from-[#9554C3] hover:to-[#A875D0] transition-colors'>Pesan Sekarang</a>
     </div>
 
-    <!-- Menambahkan padding-top (pt) agar konten utama tidak tertutup oleh header sticky -->
+    <!-- Main Content -->
     <div class="bg-aesthetic min-h-screen relative pt-[88px] lg:pt-[110px] pb-0 lg:pb-10 px-0 lg:px-6 flex justify-center">
         <!-- Main Glass Container -->
         <div class="w-full max-w-6xl bg-white/70 backdrop-blur-xl lg:rounded-[40px] shadow-[0_20px_60px_-15px_rgba(200,162,232,0.15)] border border-white/60 overflow-hidden relative">
@@ -229,19 +227,29 @@
                 <div class="px-6 md:px-12 flex justify-between items-end mb-10 animate-fade-in-up">
                     <div>
                         <h2 class="font-serif text-3xl md:text-4xl text-[#5A4A5E] mb-2">Katalog</h2>
-                        <p class="text-[#958499]">Pilihan kado eksklusif untuk setiap pencapaian (Geser untuk melihat).</p>
+                        <p class="text-[#958499]">Pilihan kado eksklusif untuk setiap pencapaian.</p>
                     </div>
-                    <button class="hidden lg:flex items-center gap-2 text-[#A875D0] font-medium hover:text-[#C8A2E8] cursor-pointer">
-                        Lihat Semua <span class="text-xl">&rarr;</span>
-                    </button>
                 </div>
 
-                <div class="relative w-full overflow-hidden pb-8 animate-fade-in-up" style="animation-delay: 0.2s">
-                    <div id="katalog-container" class="flex gap-6 overflow-x-auto hide-scrollbar cursor-grab px-6 md:px-12 w-full select-none">
+                <div class="relative w-full overflow-hidden pb-8 animate-fade-in-up group" style="animation-delay: 0.2s">
+                    
+                    <!-- Tombol Navigasi Kiri -->
+                    <button id="slide-left" class="absolute left-2 md:left-6 top-[40%] -translate-y-1/2 z-10 bg-white/95 backdrop-blur border border-[#F0E1F9] text-[#A875D0] w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-[#C8A2E8] hover:text-white hover:scale-110 transition-all cursor-pointer">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+
+                    <!-- Container Katalog -->
+                    <div id="katalog-container" class="flex gap-6 overflow-x-auto hide-scrollbar cursor-grab px-6 md:px-12 w-full select-none snap-x snap-mandatory">
                         <!-- Card Produk di-generate via JavaScript -->
                     </div>
-                    <div class="absolute left-0 top-0 bottom-8 w-12 md:w-24 bg-gradient-to-r from-white/90 to-transparent pointer-events-none"></div>
-                    <div class="absolute right-0 top-0 bottom-8 w-12 md:w-24 bg-gradient-to-l from-white/90 to-transparent pointer-events-none"></div>
+
+                    <!-- Tombol Navigasi Kanan -->
+                    <button id="slide-right" class="absolute right-2 md:right-6 top-[40%] -translate-y-1/2 z-10 bg-white/95 backdrop-blur border border-[#F0E1F9] text-[#A875D0] w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-[#C8A2E8] hover:text-white hover:scale-110 transition-all cursor-pointer">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <div class="absolute left-0 top-0 bottom-8 w-8 md:w-24 bg-gradient-to-r from-white/90 to-transparent pointer-events-none"></div>
+                    <div class="absolute right-0 top-0 bottom-8 w-8 md:w-24 bg-gradient-to-l from-white/90 to-transparent pointer-events-none"></div>
                 </div>
             </section>
 
@@ -597,7 +605,6 @@
             if(iconClose) iconClose.classList.toggle('hidden');
         }
 
-        // Pengecekan Null Check agar script tidak error
         if (menuBtn) {
             menuBtn.addEventListener('click', toggleMenu);
         }
@@ -606,19 +613,21 @@
             if (link) link.addEventListener('click', toggleMenu);
         });
 
-        // RENDER KATALOG (TANPA ANIMASI GERAK & DENGAN TOMBOL CTA PESAN)
+        // RENDER KATALOG 
         const products = [
             { id: 1, name: 'Papan Ucapan Akrilik', price: 'Sewa 60K / Beli 350K', category: 'Papan Akrilik', img: 'assets/produk4.png' },
             { id: 2, name: 'Bucket Bunga', price: 'Mulai Rp 150.000', category: 'Buket', img: 'assets/produk3.png' },
             { id: 3, name: 'Bucket Uang', price: 'Mulai Rp 300.000', category: 'Buket', img: 'assets/produk2.png' },
-            { id: 4, name: 'Bucket Boneka', price: 'Mulai Rp 135.000', category: 'Buket', img: 'assets/produk1.png' }
+            { id: 4, name: 'Bucket Boneka', price: 'Mulai Rp 135.000', category: 'Buket', img: 'assets/produk1.png' },
+            // Vibe Digital Design / Sketsa Custom
+            { id: 5, name: 'Request Desain Custom', price: 'Harga Menyesuaikan', category: 'Custom', img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=400&auto=format&fit=crop' }
         ];
 
         const katalogContainer = document.getElementById('katalog-container');
 
         products.forEach(item => {
             const card = document.createElement('div');
-            card.className = "w-[260px] md:w-[280px] bg-white p-4 rounded-3xl shadow-sm border border-[#F0E1F9] flex-shrink-0 group hover:shadow-xl hover:shadow-[#C8A2E8]/20 transition-all duration-300 pointer-events-auto hover:-translate-y-1";
+            card.className = "w-[260px] md:w-[280px] bg-white p-4 rounded-3xl shadow-sm border border-[#F0E1F9] flex-shrink-0 group hover:shadow-xl hover:shadow-[#C8A2E8]/20 transition-all duration-300 pointer-events-auto snap-center";
             card.innerHTML = `
                 <div class="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-[#FAF5FF]">
                     <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none" loading="lazy" />
@@ -632,6 +641,54 @@
             `;
             katalogContainer.appendChild(card);
         });
+
+        // LOGIKA SLIDER KATALOG (TOMBOL & DRAG)
+        const slideLeft = document.getElementById('slide-left');
+        const slideRight = document.getElementById('slide-right');
+
+        // Scroll pakai tombol
+        if(slideLeft && slideRight && katalogContainer) {
+            slideLeft.addEventListener('click', () => {
+                katalogContainer.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+            slideRight.addEventListener('click', () => {
+                katalogContainer.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+        }
+
+        // Drag to scroll pakai Mouse (Cursor Grab)
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        katalogContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            katalogContainer.classList.add('cursor-grabbing');
+            katalogContainer.classList.remove('cursor-grab');
+            startX = e.pageX - katalogContainer.offsetLeft;
+            scrollLeft = katalogContainer.scrollLeft;
+        });
+        
+        katalogContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            katalogContainer.classList.remove('cursor-grabbing');
+            katalogContainer.classList.add('cursor-grab');
+        });
+        
+        katalogContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            katalogContainer.classList.remove('cursor-grabbing');
+            katalogContainer.classList.add('cursor-grab');
+        });
+        
+        katalogContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - katalogContainer.offsetLeft;
+            const walk = (x - startX) * 1.5; // Kecepatan geser
+            katalogContainer.scrollLeft = scrollLeft - walk;
+        });
+
 
         // RENDER GAMBAR PORTOFOLIO
         const portfolioImagesRow1 = [
@@ -694,6 +751,7 @@
                             <option value="Bucket Bunga">Bucket Bunga</option>
                             <option value="Bucket Uang">Bucket Uang</option>
                             <option value="Bucket Snack">Bucket Snack</option>
+                            <option value="Request Desain Custom">Request Desain Custom</option>
                         </select>
                     </div>
                     <div class="sm:col-span-4 flex flex-col gap-2">
@@ -724,7 +782,6 @@
             const select = row.querySelector('.produk-select');
             const tipeContainer = row.querySelector('.tipe-pesanan-container');
 
-            // Logika menampilkan opsi Sewa/Beli hanya jika memilih Papan Akrilik
             select.addEventListener('change', (e) => {
                 if (e.target.value.includes('Akrilik')) {
                     tipeContainer.classList.remove('hidden');
@@ -750,20 +807,18 @@
             rows.forEach((row) => {
                 const btn = row.querySelector('.btn-hapus-produk');
                 if (rows.length > 1) {
-                    btn.classList.remove('hidden'); // Munculkan tombol hapus jika produk > 1
+                    btn.classList.remove('hidden');
                 } else {
-                    btn.classList.add('hidden'); // Sembunyikan jika hanya 1 produk tersisa
+                    btn.classList.add('hidden');
                 }
             });
         }
 
-        // Inisialisasi baris pertama pesanan saat halaman dimuat
         createProductRow();
 
         btnTambahProduk.addEventListener('click', createProductRow);
 
-
-        // LOGIKA SUBMIT FORM KE WHATSAPP (MULTI-PRODUK)
+        // LOGIKA SUBMIT FORM KE WHATSAPP
         const orderForm = document.getElementById('order-form');
         orderForm.addEventListener('submit', function(e) {
             e.preventDefault(); 
@@ -778,7 +833,6 @@
 
             if(!nama) return;
 
-            // Mengumpulkan data seluruh baris produk pesanan
             let detailPesanan = "";
             const productItems = document.querySelectorAll('.product-item');
 
@@ -787,7 +841,6 @@
                 const qty = item.querySelector('.qty-input').value;
                 let tipeStr = "";
 
-                // Tambahkan keterangan Sewa/Beli khusus untuk Papan Akrilik
                 if (productName.includes('Akrilik')) {
                     const checkedRadio = item.querySelector(`input[type="radio"]:checked`);
                     if (checkedRadio) {
@@ -797,7 +850,6 @@
                 detailPesanan += `▫️ ${qty}x ${productName}${tipeStr}\n`;
             });
 
-            // Cek apakah ada file foto yang akan dilampirkan pelanggan nanti
             let lampiranFotoText = "";
             if (fileInput.files.length > 0) {
                 lampiranFotoText = "\n\n*(Catatan: Saya memiliki foto referensi dan akan mengirimkannya segera di chat ini)*";
